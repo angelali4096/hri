@@ -9,7 +9,7 @@ class Node:
 		self.g = g    			  # The g-value for the node
 		self.x = x    			  # The x coordinate 
 		self.y = y 	  			  # The y coordinate
-		self.mode = mode		  # The mode (horizontal or vertical)
+		self.mode = mode		  # The mode (horizontal (0) or vertical (1))
 
 	def parent(self, idx):
 		return (idx - 1)/2
