@@ -1,5 +1,8 @@
+# Graph-Node Implemenation 
+# 16-467: Human-Robot Interaction
+
 class Node:
-	def __init__(self, nid, priority, in_pq, g, x, y, mode):
+	def __init__(self, nid, pq_id, in_pq, g, x, y, mode):
 		self.id = nid 			  # The node ID
 		self.pq_id = pq_id        # The nodes index/priority in the priority queue
 		self.in_pq = in_pq		  # Whether or not the node is in the priority queue
@@ -8,11 +11,12 @@ class Node:
 		self.y = y 	  			  # The y coordinate
 		self.mode = mode		  # The mode (horizontal or vertical)
 
-	def parent(self):
-		return (self.pq_id - 1)/2
+	def parent(self, idx):
+		return (idx - 1)/2
 
-	def left(self):
-		return 2*self.pq_id + 1
+	def left(self, idx):
+		return 2*idx + 1
 
-	def right(self):
-		return 2*self.pq_id + 2
+	def right(self, idx):
+		return 2*idx + 2
+
