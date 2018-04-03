@@ -70,6 +70,8 @@ class Map(EventBasedAnimationClass):
 		for row in range(rowStart, rowEnd):
 			for col in range(colStart, colEnd):
 				self.matrix[row][col] = 1
+		print(self.matrix)
+
 
 	#mapID = 2
 	def drawDiagMap(self):
