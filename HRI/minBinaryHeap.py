@@ -19,7 +19,13 @@ class MinBinaryHeap():
 	# Helper function to print the nodes in the heap
 	def print_data(self):
 		for i in range(0, self.size):
-			print "(PQID: " + str(self.data[i].pq_id) + ", G: " + str(self.data[i].g) + ", NID: ", str(self.data[i].id)
+			print "(PQID: " + str(self.data[i].pq_id) + ", G: " + str(self.data[i].g) + ", NID: " + str(self.data[i].id) + ")"
+		print "\n"
+
+	# Helper function to print the node cooedinates in the heap
+	def print_data_coords(self):
+		for i in range(0, self.size):
+			print "(X: " + str(self.data[i].x) + ", Y: " + str(self.data[i].y) + ", M: " + str(self.data[i].mode) +  ", G: " + str(self.data[i].g) + ", NID: " + str(self.data[i].id) + ")"
 		print "\n"
 
 	# This function inserts a node into the heap
@@ -30,7 +36,6 @@ class MinBinaryHeap():
 		tmp_idx = idx
 		pidx = node.parent(idx)
 		self.data.append(node)
-
 		while(not self.is_empty() and pidx > -1  and pidx <= self.size):
 			if(self.cmp(self.data[pidx], node)):
 				break
@@ -79,11 +84,15 @@ class MinBinaryHeap():
 
 		min_ele = self.data[0]
 		min_ele.in_pq = False
-		self.data[0] = self.data.pop(self.size - 1)
 		self.data[0].pq_id = 0
 		self.size -= 1
 
-		self.min_heapify(0)
+		if not self.is_empty():
+			self.data[0] = self.data.pop(self.size)
+			self.min_heapify(0)
+		else:
+			self.data.pop(self.size - 1)
+
 		return min_ele
 
 	# This function updates the g-value of a node in the heap
