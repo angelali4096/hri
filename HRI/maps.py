@@ -68,6 +68,8 @@ class Map(BasicAnimationClass):
 		for row in range(rowStart, rowStart+4):
 			for col in range(colStart, colStart+14):
 				self.matrix[row][col] = 1
+		print(self.matrix)
+
 
 		x = colStart*self.cellSize
 		y = rowStart*self.cellSize
