@@ -17,13 +17,17 @@ class Map(BasicAnimationClass):
 		self.mapID = mapID
 		self.rows = 20
 		self.cols = 34
+		self.robotPos = (-1, -1)
 
 	def drawRobot(self):
 		x = self.robotPos[0] * self.cellSize
 		y = self.robotPos[1] * self.cellSize
 		self.canvas.create_rectangle(x, y, x+self.cellSize, y+self.cellSize, fill = "blue")
 
-
+	def drawGoal(self):
+		x = 27 * self.cellSize
+		y = 5 * self.cellSize
+		self.canvas.create_rectangle(x, y, x+self.cellSize, y+self.cellSize, fill = "red")
 
 	def moveRobot(self, xChange, yChange):
 		(x, y) = self.robotPos
@@ -32,6 +36,7 @@ class Map(BasicAnimationClass):
 			and newRobotPos[0] >= 0 and newRobotPos[1] >= 0
 			and self.matrix[newRobotPos[1]][newRobotPos[0]] == 0):
 			self.robotPos = newRobotPos
+
 
 	def onKeyPressed(self, event):
 		if event.keysym == "space":
@@ -68,7 +73,6 @@ class Map(BasicAnimationClass):
 		for row in range(rowStart, rowStart+4):
 			for col in range(colStart, colStart+14):
 				self.matrix[row][col] = 1
-		print(self.matrix)
 
 
 		x = colStart*self.cellSize
@@ -83,7 +87,7 @@ class Map(BasicAnimationClass):
 	def drawDiagMap(self):
 		self.canvas.create_rectangle(0, 0, self.width, self.height, fill="white")
 
-		startX = 12 
+		startX = 12
 		startY = 2
 		bigBlockY = 4
 		bigBlockX = 6 * 2
@@ -149,6 +153,7 @@ class Map(BasicAnimationClass):
 		if self.mapID == 2: self.drawDiagMap()
 		if self.mapID == 3: self.drawMazeMap()
 		self.drawRobot()
+		self.drawGoal()
 
 	def initAnimation(self):
 		rows = self.rows
