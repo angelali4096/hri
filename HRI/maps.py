@@ -1,8 +1,7 @@
 """
 TO DO:
 arrow on robot to indicate mode
-maze map
-randomize map choices
+goal square
 """
 
 from Tkinter import *
@@ -17,17 +16,11 @@ class Map(BasicAnimationClass):
 		self.mapID = mapID
 		self.rows = 20
 		self.cols = 34
-		self.robotPos = (-1, -1)
 
 	def drawRobot(self):
 		x = self.robotPos[0] * self.cellSize
 		y = self.robotPos[1] * self.cellSize
 		self.canvas.create_rectangle(x, y, x+self.cellSize, y+self.cellSize, fill = "blue")
-
-	def drawGoal(self):
-		x = 27 * self.cellSize
-		y = 5 * self.cellSize
-		self.canvas.create_rectangle(x, y, x+self.cellSize, y+self.cellSize, fill = "red")
 
 	def moveRobot(self, xChange, yChange):
 		(x, y) = self.robotPos
@@ -36,7 +29,6 @@ class Map(BasicAnimationClass):
 			and newRobotPos[0] >= 0 and newRobotPos[1] >= 0
 			and self.matrix[newRobotPos[1]][newRobotPos[0]] == 0):
 			self.robotPos = newRobotPos
-
 
 	def onKeyPressed(self, event):
 		if event.keysym == "space":
@@ -51,13 +43,75 @@ class Map(BasicAnimationClass):
 			if event.keysym == "Up": self.moveRobot(1, 0)
 			if event.keysym == "Down": self.moveRobot(-1, 0)
 
-		#only for testing
+		# only for testing
 		# if event.keysym == "Up": self.moveRobot(0, -1)
 		# if event.keysym == "Down": self.moveRobot(0, 1)
 		# if event.keysym == "Right": self.moveRobot(1, 0)
 		# if event.keysym == "Left": self.moveRobot(-1, 0)
 
+
+	def generateTestMapMatrix(self, matrix):
+		rowStart = self.rows/2 - 2
+		colStart = self.cols/2 - 7
+
+		for row in range(rowStart, rowStart+4):
+			for col in range(colStart, colStart+14):
+				matrix[row][col] = 1
+
+		return matrix
+
+	def generateDiagMapMatrix(self, matrix):
+		startX = 12 
+		startY = 2
+		bigBlockY = 4
+		bigBlockX = 6 * 2
+	
+		#top big block
+		for row in range(startY, startY+bigBlockY):
+			for col in range(startX, startX+bigBlockX):
+				matrix[row][col] = 1
+
+		#top diagonal blocks
+		curX = startX + bigBlockX
+		curY = startY + bigBlockY
+		numLevels = (bigBlockX/2) - 1
+		for i in xrange(numLevels):
+			curX -= 1 * 2
+			curY += 1
+			for row in range(startY+bigBlockY, curY):
+				for col in range(startX, curX):
+					matrix[row][col] = 1
+
+
+		#bottom big block
+		for row in range(self.rows-bigBlockY-startY, self.rows-startY):
+			for col in range(startX, startX+bigBlockX):
+				matrix[row][col] = 1
 		
+		#bottom diagonal blocks
+		curX = startX
+		curY = self.rows - bigBlockY - startY
+		for i in xrange(numLevels):
+			curX += 1 * 2
+			curY -= 1
+			for row in range(curY, self.rows-bigBlockY-startY):
+				for col in range(curX,startX+bigBlockX):
+					matrix[row][col] = 1
+					
+		return matrix
+
+		
+	def generateMatrix(self):
+		matrix = []
+		for row in range(self.rows): matrix += [[0] * self.cols]
+		
+		if self.mapID == 1:
+			matrix = self.generateTestMapMatrix(matrix)
+		if self.mapID == 2:
+			matrix = self.generateDiagMapMatrix(matrix)
+
+		return matrix
+
 	#mapID = 0
 	def drawBlankMap(self):
 		self.canvas.create_rectangle(0, 0, self.width, self.height, fill="white")
@@ -68,12 +122,6 @@ class Map(BasicAnimationClass):
 
 		rowStart = self.rows/2 - 2
 		colStart = self.cols/2 - 7
-
-		#create matrix
-		for row in range(rowStart, rowStart+4):
-			for col in range(colStart, colStart+14):
-				self.matrix[row][col] = 1
-
 
 		x = colStart*self.cellSize
 		y = rowStart*self.cellSize
@@ -87,7 +135,7 @@ class Map(BasicAnimationClass):
 	def drawDiagMap(self):
 		self.canvas.create_rectangle(0, 0, self.width, self.height, fill="white")
 
-		startX = 12
+		startX = 12 
 		startY = 2
 		bigBlockY = 4
 		bigBlockX = 6 * 2
@@ -96,10 +144,6 @@ class Map(BasicAnimationClass):
 		self.canvas.create_rectangle(startX * self.cellSize, startY * self.cellSize, 
 				(startX + bigBlockX) * self.cellSize,
 				(startY + bigBlockY) * self.cellSize, fill="black")
-		#top big block matrix
-		for row in range(startY, startY+bigBlockY):
-			for col in range(startX, startX+bigBlockX):
-				self.matrix[row][col] = 1
 
 		#top diagonal blocks
 		curX = startX + bigBlockX
@@ -111,10 +155,6 @@ class Map(BasicAnimationClass):
 			self.canvas.create_rectangle(startX * self.cellSize, 
 				(bigBlockY + startY) * self.cellSize, 
 				curX * self.cellSize, curY * self.cellSize, fill="black")
-			#matrix for top diagonal blocks
-			for row in range(startY+bigBlockY, curY):
-				for col in range(startX, curX):
-					self.matrix[row][col] = 1
 
 		#bottom big block
 		self.canvas.create_rectangle(startX * self.cellSize, 
@@ -122,10 +162,6 @@ class Map(BasicAnimationClass):
 				(startX + bigBlockX) * self.cellSize, 
 				(self.rows - startY) * self.cellSize,
 				 fill="black")
-		#bottom big block matrix
-		for row in range(self.rows-bigBlockY-startY, self.rows-startY):
-			for col in range(startX, startX+bigBlockX):
-				self.matrix[row][col] = 1
 		
 		#bottom diagonal blocks
 		curX = startX
@@ -136,33 +172,23 @@ class Map(BasicAnimationClass):
 			self.canvas.create_rectangle(curX * self.cellSize, 
 				curY * self.cellSize, (startX + bigBlockX) * self.cellSize, 
 				(self.rows - bigBlockY - startY) * self.cellSize, fill="black")
-			#matrix for bottom diangonal blocks
-			for row in range(curY, self.rows-bigBlockY-startY):
-				for col in range(curX,startX+bigBlockX):
-					self.matrix[row][col] = 1
 
-
-	#mapID = 3
-	def drawMazeMap(self):
-		self.canvas.create_rectangle(0, 0, self.width, self.height, fill="white")
 
 	def redrawAll(self):
 		self.canvas.delete(ALL)
 		if self.mapID == 0: self.drawBlankMap()
 		if self.mapID == 1: self.drawTestMap()
 		if self.mapID == 2: self.drawDiagMap()
-		if self.mapID == 3: self.drawMazeMap()
 		self.drawRobot()
-		self.drawGoal()
 
 	def initAnimation(self):
 		rows = self.rows
 		cols = self.cols
-		self.matrix = []
-		for row in range(rows): self.matrix += [[0] * cols]
+		self.matrix = self.generateMatrix()
 		self.robotPos = (1, rows/2)
 		self.mode = "vertical"
 		self.app.setTimerDelay(500)
-		
+
+#map IDs range from 0 to 2
 mapObj = Map(2)
 mapObj.run()
