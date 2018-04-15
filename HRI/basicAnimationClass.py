@@ -3,6 +3,7 @@
 
 from Tkinter import *
 from basicAnimation import BasicAnimationRunner
+import time
 
 class BasicAnimationClass(object):
     # Override these methods (or not)
@@ -23,11 +24,13 @@ class BasicAnimationClass(object):
             self.app = app
             self.canvas = canvas
             self.initAnimation()
-            while app.isRunning():
+            while self.isGoalReached == False:
                 (eventType, event) = app.getEvent()
                 if (eventType == "mousePressed"): self.onMousePressed(event)
                 elif (eventType == "keyPressed"): self.onKeyPressed(event)
                 elif (eventType == "timerFired"): self.onTimerFired()
                 self.redrawAll()
             print "Done!"
+            time.sleep(5)
+            app.quit()
         BasicAnimationRunner(myBasicAnimation, width=self.width, height=self.height)

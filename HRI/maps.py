@@ -11,7 +11,7 @@ from timeOptPlanner import TimeOptPlanner
 from random import *
 
 class Map(BasicAnimationClass):
-    def __init__(self, mapID):
+    def __init__(self, mapID, assistanceType):
         self.cellSize = 30
         canvasWidth = self.cellSize * 34
         canvasHeight = self.cellSize * 20
@@ -19,7 +19,7 @@ class Map(BasicAnimationClass):
         self.mapID = mapID
         self.rows = 20
         self.cols = 34
-        self.assistanceType = randint(1,3) # randomly assigns assistance type 
+        self.assistanceType = assistanceType # randomly assigns assistance type 
         self.mode = "vertical" # This is the mode the user is currently using
         self.zone = 1 # This is the optimal mode zone based on the optimality map
 
@@ -43,14 +43,9 @@ class Map(BasicAnimationClass):
             return self.mode
 
         elif self.assistanceType == 3:
-            # print (self.robotPos[0], self.robotPos[1])
-            # print self.optMode[self.robotPos[0]][self.robotPos[1]]
-
             if self.optMode[self.robotPos[1]][self.robotPos[0]] == 0:
-                # print "horizontal"
                 return "horizontal"
             else:
-                # print "vertical"
                 return "vertical"
 
     def moveRobot(self, xChange, yChange):
@@ -61,7 +56,6 @@ class Map(BasicAnimationClass):
             and self.matrix[newRobotPos[1]][newRobotPos[0]] == 0):
             self.robotPos = newRobotPos
             self.mode = self.getOptMode()
-            # print self.robotPos
 
     def onKeyPressed(self, event):
         if event.keysym == "space":
@@ -142,6 +136,8 @@ class Map(BasicAnimationClass):
             matrix = self.generateTestMapMatrix(matrix)
         if self.mapID == 2:
             matrix = self.generateDiagMapMatrix(matrix)
+            self.gx = 28
+            self.gy = 4
 
         return matrix
 
@@ -206,13 +202,30 @@ class Map(BasicAnimationClass):
                 curY * self.cellSize, (startX + bigBlockX) * self.cellSize, 
                 (self.rows - bigBlockY - startY) * self.cellSize, fill="black")
 
+    def drawGoal(self):
+        x = self.gx * self.cellSize
+        y = self.gy * self.cellSize
+        self.canvas.create_rectangle(x, y, x+self.cellSize, y+self.cellSize, fill = "green")
+
+    def goalReached(self):
+        if self.gx == self.robotPos[0] and self.gy == self.robotPos[1]:
+            self.isGoalReached = True
+            self.canvas.delete(ALL)
+            self.canvas.create_text(self.cellSize * (self.cols/2), self.cellSize * (self.rows/2 - 1), font="Times 40 bold",
+            text="You have completed this map!")
+            self.canvas.create_text(self.cellSize * (self.cols/2), self.cellSize * (self.rows/2 + 1), font="Times 40 bold",
+            text="Please wait for the next map to load.")
 
     def redrawAll(self):
         self.canvas.delete(ALL)
         if self.mapID == 0: self.drawBlankMap()
         if self.mapID == 1: self.drawTestMap()
         if self.mapID == 2: self.drawDiagMap()
+        
+        self.drawGoal()
         self.drawRobot()
+
+        self.goalReached()
 
     def initOptModeArray(self):
         self.optMode = [[5 for x in range(self.cols)] for y in range(self.rows)]
@@ -230,6 +243,7 @@ class Map(BasicAnimationClass):
     def initAnimation(self):
         rows = self.rows
         cols = self.cols
+        self.isGoalReached = False
         self.matrix = self.generateMatrix()
         self.robotPos = (1, rows/2)
         self.planner = TimeOptPlanner(28, 4, self.rows, self.cols, self.matrix)
@@ -239,5 +253,5 @@ class Map(BasicAnimationClass):
         self.app.setTimerDelay(500)
 
 #map IDs range from 0 to 2
-mapObj = Map(2)
-mapObj.run()
+# mapObj = Map(2)
+# mapObj.run()
