@@ -83,7 +83,7 @@ class BasicAnimationRunner(object):
             except:
                 pass
             #sys.exit(0)
-            self.thread.join()
+            # self.thread.join()
 
     def __init__(self, appFn, width=300, height=300, **kwargs):
         self.runningInIDLE =  ("idlelib" in sys.modules)    
