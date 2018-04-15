@@ -11,7 +11,8 @@ from timeOptPlanner import TimeOptPlanner
 from random import *
 
 class Map(BasicAnimationClass):
-    def __init__(self, mapID, assistanceType):
+    def __init__(self, mapID, assistanceType, lastMap):
+        self.lastMap = lastMap
         self.cellSize = 30
         canvasWidth = self.cellSize * 34
         canvasHeight = self.cellSize * 20
@@ -211,10 +212,16 @@ class Map(BasicAnimationClass):
         if self.gx == self.robotPos[0] and self.gy == self.robotPos[1]:
             self.isGoalReached = True
             self.canvas.delete(ALL)
-            self.canvas.create_text(self.cellSize * (self.cols/2), self.cellSize * (self.rows/2 - 1), font="Times 40 bold",
-            text="You have completed this map!")
-            self.canvas.create_text(self.cellSize * (self.cols/2), self.cellSize * (self.rows/2 + 1), font="Times 40 bold",
-            text="Please wait for the next map to load.")
+            if self.lastMap == False:
+                self.canvas.create_text(self.cellSize * (self.cols/2), self.cellSize * (self.rows/2 - 1), font="Times 40 bold",
+                text="You have completed this map!")
+                self.canvas.create_text(self.cellSize * (self.cols/2), self.cellSize * (self.rows/2 + 1), font="Times 40 bold",
+                text="Please wait for the next map to load.")
+            else:
+                self.canvas.create_text(self.cellSize * (self.cols/2), self.cellSize * (self.rows/2 - 1), font="Times 40 bold",
+                text="You have completed the study.")
+                self.canvas.create_text(self.cellSize * (self.cols/2), self.cellSize * (self.rows/2 + 1), font="Times 40 bold",
+                text="Thank you for participating!")
 
     def redrawAll(self):
         self.canvas.delete(ALL)

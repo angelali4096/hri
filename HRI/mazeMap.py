@@ -190,6 +190,11 @@ class MazeMap(BasicAnimationClass):
     def goalReached(self):
         if self.gx == self.robotMatrixPos[0] and self.gy == self.robotMatrixPos[1]:
             self.isGoalReached = True
+            self.canvas.delete(ALL)
+            self.canvas.create_text(self.cellSize * (self.canvasCols/2), self.cellSize * (self.canvasRows/2 - 1), font="Times 20 bold",
+            text="You have completed this map!")
+            self.canvas.create_text(self.cellSize * (self.canvasCols/2), self.cellSize * (self.canvasRows/2 + 1), font="Times 20 bold",
+            text="Please wait for the next map to load.")
 
     def redrawAll(self):
         self.canvas.delete(ALL)
