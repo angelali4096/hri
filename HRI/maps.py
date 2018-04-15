@@ -19,12 +19,39 @@ class Map(BasicAnimationClass):
         self.mapID = mapID
         self.rows = 20
         self.cols = 34
-        self.assistanceType = 3 #randint(1,3)
+        self.assistanceType = randint(1,3) # randomly assigns assistance type 
+        self.mode = "vertical" # This is the mode the user is currently using
+        self.zone = 1 # This is the optimal mode zone based on the optimality map
 
     def drawRobot(self):
         x = self.robotPos[0] * self.cellSize
         y = self.robotPos[1] * self.cellSize
         self.canvas.create_rectangle(x, y, x+self.cellSize, y+self.cellSize, fill = "blue")
+
+    def getOptMode(self):
+        if self.assistanceType == 1:
+            return self.mode
+
+        elif self.assistanceType == 2:
+            if self.optMode[self.robotPos[1]][self.robotPos[0]] != self.zone:
+                if self.zone == 0:
+                    self.zone = 1
+                    return "vertical"
+                else:
+                    self.zone = 0
+                    return "horizontal"
+            return self.mode
+
+        elif self.assistanceType == 3:
+            # print (self.robotPos[0], self.robotPos[1])
+            # print self.optMode[self.robotPos[0]][self.robotPos[1]]
+
+            if self.optMode[self.robotPos[1]][self.robotPos[0]] == 0:
+                # print "horizontal"
+                return "horizontal"
+            else:
+                # print "vertical"
+                return "vertical"
 
     def moveRobot(self, xChange, yChange):
         (x, y) = self.robotPos
@@ -33,6 +60,7 @@ class Map(BasicAnimationClass):
             and newRobotPos[0] >= 0 and newRobotPos[1] >= 0
             and self.matrix[newRobotPos[1]][newRobotPos[0]] == 0):
             self.robotPos = newRobotPos
+            self.mode = self.getOptMode()
             # print self.robotPos
 
     def onKeyPressed(self, event):
@@ -43,10 +71,10 @@ class Map(BasicAnimationClass):
                 self.mode = "vertical"
         if self.mode == "vertical":
             if event.keysym == "Up": self.moveRobot(0, -1)
-            if event.keysym == "Down": self.moveRobot(0, 1)
-        if self.mode == "horizontal":
+            elif event.keysym == "Down": self.moveRobot(0, 1)
+        elif self.mode == "horizontal":
             if event.keysym == "Up": self.moveRobot(1, 0)
-            if event.keysym == "Down": self.moveRobot(-1, 0)
+            elif event.keysym == "Down": self.moveRobot(-1, 0)
 
         # only for testing
         # if event.keysym == "Up": self.moveRobot(0, -1)
@@ -188,7 +216,7 @@ class Map(BasicAnimationClass):
 
     def initOptModeArray(self):
         self.optMode = [[5 for x in range(self.cols)] for y in range(self.rows)]
-        print (len(self.optMode), len(self.optMode[0]))
+        # print (len(self.optMode), len(self.optMode[0]))
         for i in range(self.rows):
             for j in range(self.cols):
                 if self.dist[i][j][0] < self.dist[i][j][1]:
@@ -208,7 +236,6 @@ class Map(BasicAnimationClass):
         self.planner.dijkstra()
         self.dist = self.planner.dist 
         self.initOptModeArray()
-        self.mode = "vertical"
         self.app.setTimerDelay(500)
 
 #map IDs range from 0 to 2
