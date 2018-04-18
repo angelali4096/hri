@@ -8,18 +8,24 @@ from Tkinter import *
 from basicAnimationClass import BasicAnimationClass
 from timeOptPlanner import TimeOptPlanner
 from random import *
+from time import *
+import yaml
 
 class MazeMap(BasicAnimationClass):
-    def __init__(self):
+    def __init__(self, userID, assistanceType, lastMap):
+        self.lastMap = lastMap
         self.cellSize = 30
         canvasWidth = self.cellSize * 20
         canvasHeight = self.cellSize * 20
         super(MazeMap, self).__init__(canvasWidth, canvasHeight)
         self.canvasRows = 20
         self.canvasCols = 20
-        self.assistanceType = 2 #randint(1,3) # randomly assigns assistance type 
+        self.assistanceType = assistanceType #randint(1,3) # randomly assigns assistance type 
         self.mode = "vertical" # This is the mode the user is currently using
         self.zone = 1 # This is the optimal mode zone based on the optimality map
+        self.moveNum = 0
+        self.userID = userID
+        self.dataFile = "test_" + str(self.userID) + "_" + str(self.assistanceType) + ".yml"
 
     def getOptMode(self):
         if self.assistanceType == 1:
@@ -79,7 +85,7 @@ class MazeMap(BasicAnimationClass):
     def onKeyPressed(self, event):
         if event.keysym == "space":
             if self.mode == "vertical": 
-                self.mode = "horizontal"
+                self.mode = "horizontal"  
             else:
                 self.mode = "vertical"
         if self.mode == "vertical":
@@ -89,6 +95,23 @@ class MazeMap(BasicAnimationClass):
             if event.keysym == "Up": self.moveRobot(1, 0)
             elif event.keysym == "Down": self.moveRobot(-1, 0)
 
+        if self.zone == 0:
+            zonestr = "vertical"
+        else:
+            zonestr = "horizontal"
+
+        key = "move" + str(self.moveNum)
+        filename = "test/" + self.dataFile
+        with open(filename, 'a') as yaml_file:
+            data = {key: {"x" : str(self.robotMatrixPos[0]), \
+                          "y": str(self.robotMatrixPos[1]), \
+                          "zone": zonestr, \
+                          "mode": self.mode, \
+                          "time": str(time()), \
+                          "keypress": event.keysym}}
+            yaml.dump(data, yaml_file, default_flow_style=False)
+
+        self.moveNum += 1
         # only for testing
         # if event.keysym == "Up": self.moveRobot(0, -1)
         # if event.keysym == "Down": self.moveRobot(0, 1)
@@ -191,10 +214,16 @@ class MazeMap(BasicAnimationClass):
         if self.gx == self.robotMatrixPos[0] and self.gy == self.robotMatrixPos[1]:
             self.isGoalReached = True
             self.canvas.delete(ALL)
-            self.canvas.create_text(self.cellSize * (self.canvasCols/2), self.cellSize * (self.canvasRows/2 - 1), font="Times 20 bold",
-            text="You have completed this map!")
-            self.canvas.create_text(self.cellSize * (self.canvasCols/2), self.cellSize * (self.canvasRows/2 + 1), font="Times 20 bold",
-            text="Please wait for the next map to load.")
+            if self.lastMap == False:
+                self.canvas.create_text(self.cellSize * (self.canvasCols/2), self.cellSize * (self.canvasRows/2 - 1), font="Times 20 bold",
+                text="You have completed this map!")
+                self.canvas.create_text(self.cellSize * (self.canvasCols/2), self.cellSize * (self.canvasRows/2 + 1), font="Times 20 bold",
+                text="Please wait for the next map to load.")
+            else:
+                self.canvas.create_text(self.cellSize * (self.canvasCols/2), self.cellSize * (self.canvasRows/2 - 1), font="Times 20 bold",
+                text="You have completed the study.")
+                self.canvas.create_text(self.cellSize * (self.canvasCols/2), self.cellSize * (self.canvasRows/2 + 1), font="Times 20 bold",
+                text="Thank you for participating!")
 
     def redrawAll(self):
         self.canvas.delete(ALL)
