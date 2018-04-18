@@ -32,7 +32,6 @@ The design/structure of our user study is as follows:
 ### Running the User Study
 To run the user study execute:
 ```
-> python userStudy.py
+> python userStudy.py --userid <user ID> 
 ```
-
-TODO: update `--args` to include user ID
+Replace `<user ID>` with the user's ID
