@@ -1,9 +1,3 @@
-"""
-TO DO:
-arrow on robot to indicate mode
-goal square
-"""
-
 from Tkinter import *
 from basicAnimationClass import BasicAnimationClass
 from node import Node
@@ -11,7 +5,8 @@ from timeOptPlanner import TimeOptPlanner
 from random import *
 
 class Map(BasicAnimationClass):
-    def __init__(self, mapID, assistanceType, lastMap):
+    def __init__(self, userID, mapID, assistanceType, lastMap):
+        self.userID = userID
         self.lastMap = lastMap
         self.cellSize = 30
         canvasWidth = self.cellSize * 34
@@ -28,6 +23,11 @@ class Map(BasicAnimationClass):
         x = self.robotPos[0] * self.cellSize
         y = self.robotPos[1] * self.cellSize
         self.canvas.create_rectangle(x, y, x+self.cellSize, y+self.cellSize, fill = "blue")
+
+        if self.mode == "vertical":
+            self.canvas.create_rectangle((x+self.cellSize/2)-2, y+5, (x+self.cellSize/2)+2, y+self.cellSize-5, fill="yellow")
+        if self.mode == "horizontal":
+            self.canvas.create_rectangle(x+5, (y+self.cellSize/2)-2, x+self.cellSize-5, (y+self.cellSize/2)+2, fill="yellow")
 
     def getOptMode(self):
         if self.assistanceType == 1:
@@ -76,6 +76,16 @@ class Map(BasicAnimationClass):
         # if event.keysym == "Down": self.moveRobot(0, 1)
         # if event.keysym == "Right": self.moveRobot(1, 0)
         # if event.keysym == "Left": self.moveRobot(-1, 0)
+
+    def onMousePressed(self, event):
+        if self.isGoalReached:
+            x = event.x
+            y = event.y
+
+            if (x > self.cellSize*(self.cols/2-3) and y > self.cellSize*(self.rows/2 + 3.25) and 
+                x < self.cellSize*(self.cols/2+3) and y < self.cellSize*(self.rows/2+4.75)):
+                self.continueClicked = True
+
 
 
     def generateTestMapMatrix(self, matrix):
@@ -213,14 +223,22 @@ class Map(BasicAnimationClass):
             self.isGoalReached = True
             self.canvas.delete(ALL)
             if self.lastMap == False:
-                self.canvas.create_text(self.cellSize * (self.cols/2), self.cellSize * (self.rows/2 - 1), font="Times 40 bold",
+                self.canvas.create_text(self.cellSize * (self.cols/2), self.cellSize * (self.rows/2 - 4), font="Times 30 bold",
                 text="You have completed this map!")
-                self.canvas.create_text(self.cellSize * (self.cols/2), self.cellSize * (self.rows/2 + 1), font="Times 40 bold",
-                text="Please wait for the next map to load.")
+                self.canvas.create_text(self.cellSize * (self.cols/2), self.cellSize * (self.rows/2 - 2), font="Times 30 bold",
+                text="Before clicking continue, please fill out the survey in the")
+                self.canvas.create_text(self.cellSize * (self.cols/2), self.cellSize * (self.rows/2 ), font="Times 30 bold",
+                text="other tab using the following version ID <" + self.versionID + ">")
+                self.canvas.create_text(self.cellSize * (self.cols/2), self.cellSize * (self.rows/2 + 2), font="Times 30 bold",
+                text = "and user ID <" + str(self.userID) + ">.")
+                self.canvas.create_rectangle(self.cellSize*(self.cols/2-3), self.cellSize*(self.rows/2 + 3.25), 
+                                            self.cellSize*(self.cols/2+3), self.cellSize*(self.rows/2+4.75), fill="green")
+                self.canvas.create_text(self.cellSize * (self.cols/2), self.cellSize * (self.rows/2 +4), font="Times 30 bold",
+                text="Continue")
             else:
-                self.canvas.create_text(self.cellSize * (self.cols/2), self.cellSize * (self.rows/2 - 1), font="Times 40 bold",
+                self.canvas.create_text(self.cellSize * (self.cols/2), self.cellSize * (self.rows/2 - 1), font="Times 30 bold",
                 text="You have completed the study.")
-                self.canvas.create_text(self.cellSize * (self.cols/2), self.cellSize * (self.rows/2 + 1), font="Times 40 bold",
+                self.canvas.create_text(self.cellSize * (self.cols/2), self.cellSize * (self.rows/2 + 1), font="Times 30 bold",
                 text="Thank you for participating!")
 
     def redrawAll(self):
@@ -247,12 +265,24 @@ class Map(BasicAnimationClass):
         # for mrow in self.optMode:
         #     print mrow
 
+    def setVersionID(self):
+        num = ""
+        if self.assistanceType == 1:
+            num = "574"
+        elif self.assistanceType == 2:
+            num = "483"
+        else:
+            num = "216"
+        return num
+
     def initAnimation(self):
         rows = self.rows
         cols = self.cols
         self.isGoalReached = False
+        self.continueClicked = False
         self.matrix = self.generateMatrix()
         self.robotPos = (1, rows/2)
+        self.versionID = self.setVersionID()
         self.planner = TimeOptPlanner(28, 4, self.rows, self.cols, self.matrix)
         self.planner.dijkstra()
         self.dist = self.planner.dist 
@@ -260,5 +290,5 @@ class Map(BasicAnimationClass):
         self.app.setTimerDelay(500)
 
 #map IDs range from 0 to 2
-# mapObj = Map(2)
-# mapObj.run()
+mapObj = Map(1, 2, 1, False)
+mapObj.run()
