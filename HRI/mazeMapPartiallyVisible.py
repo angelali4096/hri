@@ -1,9 +1,3 @@
-"""
-TO DO:
-arrow on robot to indicate mode
-goal square
-"""
-
 from Tkinter import *
 from basicAnimationClass import BasicAnimationClass
 from timeOptPlanner import TimeOptPlanner
@@ -11,13 +5,13 @@ from random import *
 from time import *
 import yaml
 
-class MazeMap(BasicAnimationClass):
+class MazeMapPartiallyVisible(BasicAnimationClass):
     def __init__(self, userID, assistanceType, lastMap):
         self.lastMap = lastMap
         self.cellSize = 30
         canvasWidth = self.cellSize * 20
         canvasHeight = self.cellSize * 20
-        super(MazeMap, self).__init__(canvasWidth, canvasHeight)
+        super(MazeMapPartiallyVisible, self).__init__(canvasWidth, canvasHeight)
         self.canvasRows = 20
         self.canvasCols = 20
         self.assistanceType = assistanceType #randint(1,3) # randomly assigns assistance type 
@@ -51,6 +45,11 @@ class MazeMap(BasicAnimationClass):
         x = self.robotCanvasPos[0] * self.cellSize
         y = self.robotCanvasPos[1] * self.cellSize
         self.canvas.create_rectangle(x, y, x+self.cellSize, y+self.cellSize, fill="blue")
+
+        if self.mode == "vertical":
+            self.canvas.create_rectangle((x+self.cellSize/2)-2, y+5, (x+self.cellSize/2)+2, y+self.cellSize-5, fill="yellow")
+        if self.mode == "horizontal":
+            self.canvas.create_rectangle(x+5, (y+self.cellSize/2)-2, x+self.cellSize-5, (y+self.cellSize/2)+2, fill="yellow")
 
     def drawGoal(self):
         x = (55 - self.xOffsetCanvas) * self.cellSize
@@ -117,6 +116,15 @@ class MazeMap(BasicAnimationClass):
         # if event.keysym == "Down": self.moveRobot(0, 1)
         # if event.keysym == "Right": self.moveRobot(1, 0)
         # if event.keysym == "Left": self.moveRobot(-1, 0)
+
+    def onMousePressed(self, event):
+        if self.isGoalReached:
+            x = event.x
+            y = event.y
+
+            if (x > self.cellSize*(self.canvasCols/2-3) and y > self.cellSize*(self.canvasRows/2 + 3.25) and 
+                x < self.cellSize*(self.canvasCols/2+3) and y < self.cellSize*(self.canvasRows/2+4.75)):
+                self.continueClicked = True
         
     def generateMatrix(self):
         self.gx = 55
@@ -195,7 +203,7 @@ class MazeMap(BasicAnimationClass):
             for row in range(21,30):
                 matrix[row][col]=1
         for col in range(56,58):
-            for row in range(0,30):
+            for row in range(7,37):
                 matrix[row][col]=1
 
         return matrix
@@ -215,10 +223,18 @@ class MazeMap(BasicAnimationClass):
             self.isGoalReached = True
             self.canvas.delete(ALL)
             if self.lastMap == False:
-                self.canvas.create_text(self.cellSize * (self.canvasCols/2), self.cellSize * (self.canvasRows/2 - 1), font="Times 20 bold",
+                self.canvas.create_text(self.cellSize * (self.canvasCols/2), self.cellSize * (self.canvasRows/2 - 4), font="Times 20 bold",
                 text="You have completed this map!")
-                self.canvas.create_text(self.cellSize * (self.canvasCols/2), self.cellSize * (self.canvasRows/2 + 1), font="Times 20 bold",
-                text="Please wait for the next map to load.")
+                self.canvas.create_text(self.cellSize * (self.canvasCols/2), self.cellSize * (self.canvasRows/2 - 2), font="Times 20 bold",
+                text="Before clicking continue, please fill out")
+                self.canvas.create_text(self.cellSize * (self.canvasCols/2), self.cellSize * (self.canvasRows/2 ), font="Times 20 bold",
+                text=" the survey in the other tab using the")
+                self.canvas.create_text(self.cellSize * (self.canvasCols/2), self.cellSize * (self.canvasRows/2 + 2), font="Times 20 bold",
+                text = "following version ID <" + self.versionID + "> and user ID <" + str(self.userID) + ">.")
+                self.canvas.create_rectangle(self.cellSize*(self.canvasCols/2-3), self.cellSize*(self.canvasRows/2 + 3.25), 
+                                            self.cellSize*(self.canvasCols/2+3), self.cellSize*(self.canvasRows/2+4.75), fill="green")
+                self.canvas.create_text(self.cellSize * (self.canvasCols/2), self.cellSize * (self.canvasRows/2 +4), font="Times 20 bold",
+                text="Continue")
             else:
                 self.canvas.create_text(self.cellSize * (self.canvasCols/2), self.cellSize * (self.canvasRows/2 - 1), font="Times 20 bold",
                 text="You have completed the study.")
@@ -246,6 +262,17 @@ class MazeMap(BasicAnimationClass):
         # for mrow in self.optMode:
         #     print mrow
 
+    def setVersionID(self):
+        num = ""
+        if self.assistanceType == 1:
+            num = "102"
+        elif self.assistanceType == 2:
+            num = "281"
+        else:
+            num = "819"
+        return num
+
+
     def initAnimation(self):
         self.matrixRows = 37
         self.matrixCols = 58
@@ -254,12 +281,14 @@ class MazeMap(BasicAnimationClass):
         self.matrix = self.generateMatrix()
         self.robotMatrixPos = (1, 4)
         self.robotCanvasPos = (1, 4)
+        self.versionID = self.setVersionID()
         self.planner = TimeOptPlanner(55, 3, self.matrixRows, self.matrixCols, self.matrix)
         self.planner.dijkstra()
         self.dist = self.planner.dist 
         self.initOptModeArray()
-        self.isGoalReached = False
+        self.continueClicked = False
+        self.isGoalReached = False 
         self.app.setTimerDelay(500)
         
-# mapObj = MazeMap()
+# mapObj = MazeMapPartiallyVisible(1, 1, False)
 # mapObj.run()
