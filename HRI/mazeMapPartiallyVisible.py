@@ -105,9 +105,9 @@ class MazeMapPartiallyVisible(BasicAnimationClass):
         filename = "test/" + self.dataFile
         with open(filename, 'a') as yaml_file:
             if (self.moveNum == 0):
-                info = {info : {"assistance type" : self.assistanceType, \
-                                "user id" : self.userID,\
-                                "map id" : self.mapID}}
+                info = {info : {"assistance_type" : self.assistanceType, \
+                                "user_id" : self.userID,\
+                                "map_id" : self.mapID}}
                 yaml.dump(info, yaml_file, default_flow_style=False)
             data = {key: {"x" : str(self.robotMatrixPos[0]), \
                           "y": str(self.robotMatrixPos[1]), \
