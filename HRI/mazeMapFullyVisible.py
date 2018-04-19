@@ -14,12 +14,13 @@ class MazeMapFullyVisible(BasicAnimationClass):
         canvasWidth = self.cellSize * self.cols
         canvasHeight = self.cellSize * self.rows
         super(MazeMapFullyVisible, self).__init__(canvasWidth, canvasHeight)
-        self.assistanceType = assistanceType #randint(1,3) # randomly assigns assistance type 
+        self.assistanceType = assistanceType #randint(1,3) # randomly assigns assistance type
         self.mode = "vertical" # This is the mode the user is currently using
         self.zone = 1 # This is the optimal mode zone based on the optimality map
         self.moveNum = 0
         self.userID = userID
-        self.dataFile = "test_" + str(self.userID) + "_" + str(self.assistanceType) + ".yml"
+        self.mapID = 1
+        self.dataFile = "test_" + str(self.userID) + "_" + str(self.assistanceType) + "_" + str(self.mapID) + ".yml"
 
     def getOptMode(self):
         if self.assistanceType == 1:
@@ -59,7 +60,7 @@ class MazeMapFullyVisible(BasicAnimationClass):
     def moveRobot(self, xChange, yChange):
         (x, y) = self.robotPos
         newRobotPos = (x+xChange, y+yChange)
-        if (newRobotPos[0] < self.cols and newRobotPos[1] < self.rows 
+        if (newRobotPos[0] < self.cols and newRobotPos[1] < self.rows
             and newRobotPos[0] >= 0 and newRobotPos[1] >= 0
             and self.matrix[newRobotPos[1]][newRobotPos[0]] == 0):
             self.robotPos = newRobotPos
@@ -67,8 +68,8 @@ class MazeMapFullyVisible(BasicAnimationClass):
 
     def onKeyPressed(self, event):
         if event.keysym == "space":
-            if self.mode == "vertical": 
-                self.mode = "horizontal"  
+            if self.mode == "vertical":
+                self.mode = "horizontal"
             else:
                 self.mode = "vertical"
         if self.mode == "vertical":
@@ -84,8 +85,14 @@ class MazeMapFullyVisible(BasicAnimationClass):
             zonestr = "horizontal"
 
         key = "move" + str(self.moveNum)
+        info = "general info"
         filename = "test/" + self.dataFile
         with open(filename, 'a') as yaml_file:
+            if (self.moveNum == 0):
+                info = {info : {"assistance type" : self.assistanceType, \
+                               "user id" : self.userID,\
+                               "map id" : self.mapID}}
+                yaml.dump(info, yaml_file, default_flow_style=False)
             data = {key: {"x" : str(self.robotPos[0]), \
                           "y": str(self.robotPos[1]), \
                           "zone": zonestr, \
@@ -106,10 +113,10 @@ class MazeMapFullyVisible(BasicAnimationClass):
             x = event.x
             y = event.y
 
-            if (x > self.cellSize*(self.cols/2-6) and y > self.cellSize*(self.rows/2 + 6.5) and 
+            if (x > self.cellSize*(self.cols/2-6) and y > self.cellSize*(self.rows/2 + 6.5) and
                 x < self.cellSize*(self.cols/2+6) and y < self.cellSize*(self.rows/2+9.5)):
                 self.continueClicked = True
-        
+
     def generateMatrix(self):
         self.gx = 55
         self.gy = 3
@@ -196,8 +203,8 @@ class MazeMapFullyVisible(BasicAnimationClass):
         self.canvas.create_rectangle(0, 0, self.cols*self.cellSize, self.rows*self.cellSize, fill="white")
         for row in range(self.rows):
             for col in range(self.cols):
-                if self.matrix[row][col] == 1: 
-                    self.canvas.create_rectangle(col*self.cellSize, row*self.cellSize, 
+                if self.matrix[row][col] == 1:
+                    self.canvas.create_rectangle(col*self.cellSize, row*self.cellSize,
                         (col+1)*self.cellSize, (row+1)*self.cellSize, fill="black")
 
     def goalReached(self):
@@ -213,7 +220,7 @@ class MazeMapFullyVisible(BasicAnimationClass):
                 text=" the survey in the other tab using the")
                 self.canvas.create_text(self.cellSize * (self.cols/2), self.cellSize * (self.rows/2 + 4), font="Times 30 bold",
                 text = "following version ID <" + self.versionID + "> and user ID <" + str(self.userID) + ">.")
-                self.canvas.create_rectangle(self.cellSize*(self.cols/2-6), self.cellSize*(self.rows/2 + 6.5), 
+                self.canvas.create_rectangle(self.cellSize*(self.cols/2-6), self.cellSize*(self.rows/2 + 6.5),
                                             self.cellSize*(self.cols/2+6), self.cellSize*(self.rows/2+9.5), fill="green")
                 self.canvas.create_text(self.cellSize * (self.cols/2), self.cellSize * (self.rows/2 +8), font="Times 30 bold",
                 text="Continue")
@@ -261,11 +268,11 @@ class MazeMapFullyVisible(BasicAnimationClass):
         self.versionID = self.setVersionID()
         self.planner = TimeOptPlanner(55, 3, self.rows, self.cols, self.matrix)
         self.planner.dijkstra()
-        self.dist = self.planner.dist 
+        self.dist = self.planner.dist
         self.initOptModeArray()
         self.continueClicked = False
-        self.isGoalReached = False 
+        self.isGoalReached = False
         self.app.setTimerDelay(500)
-        
+
 # mapObj = MazeMapFullyVisible(1, 1, False)
 # mapObj.run()

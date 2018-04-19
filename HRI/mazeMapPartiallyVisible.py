@@ -14,12 +14,13 @@ class MazeMapPartiallyVisible(BasicAnimationClass):
         super(MazeMapPartiallyVisible, self).__init__(canvasWidth, canvasHeight)
         self.canvasRows = 20
         self.canvasCols = 20
-        self.assistanceType = assistanceType #randint(1,3) # randomly assigns assistance type 
+        self.assistanceType = assistanceType #randint(1,3) # randomly assigns assistance type
         self.mode = "vertical" # This is the mode the user is currently using
         self.zone = 1 # This is the optimal mode zone based on the optimality map
         self.moveNum = 0
         self.userID = userID
-        self.dataFile = "test_" + str(self.userID) + "_" + str(self.assistanceType) + ".yml"
+        self.mapID = 2
+        self.dataFile = "test_" + str(self.userID) + "_" + str(self.assistanceType) + "_" + str(self.mapID) + ".yml"
 
     def getOptMode(self):
         if self.assistanceType == 1:
@@ -59,10 +60,10 @@ class MazeMapPartiallyVisible(BasicAnimationClass):
     def moveRobot(self, xChange, yChange):
         (x, y) = self.robotMatrixPos
         newRobotPos = (x+xChange, y+yChange)
-        if (newRobotPos[0] < self.matrixCols and newRobotPos[1] < self.matrixRows 
+        if (newRobotPos[0] < self.matrixCols and newRobotPos[1] < self.matrixRows
             and newRobotPos[0] >= 0 and newRobotPos[1] >= 0
             and self.matrix[newRobotPos[1]][newRobotPos[0]] == 0):
-            
+
             if newRobotPos[0] < 3:
                 self.xOffsetCanvas = 0
             elif newRobotPos[0] < 40:
@@ -83,8 +84,8 @@ class MazeMapPartiallyVisible(BasicAnimationClass):
 
     def onKeyPressed(self, event):
         if event.keysym == "space":
-            if self.mode == "vertical": 
-                self.mode = "horizontal"  
+            if self.mode == "vertical":
+                self.mode = "horizontal"
             else:
                 self.mode = "vertical"
         if self.mode == "vertical":
@@ -100,8 +101,14 @@ class MazeMapPartiallyVisible(BasicAnimationClass):
             zonestr = "horizontal"
 
         key = "move" + str(self.moveNum)
+        info = "general info"
         filename = "test/" + self.dataFile
         with open(filename, 'a') as yaml_file:
+            if (self.moveNum == 0):
+                info = {info : {"assistance type" : self.assistanceType, \
+                                "user id" : self.userID,\
+                                "map id" : self.mapID}}
+                yaml.dump(info, yaml_file, default_flow_style=False)
             data = {key: {"x" : str(self.robotMatrixPos[0]), \
                           "y": str(self.robotMatrixPos[1]), \
                           "zone": zonestr, \
@@ -122,10 +129,10 @@ class MazeMapPartiallyVisible(BasicAnimationClass):
             x = event.x
             y = event.y
 
-            if (x > self.cellSize*(self.canvasCols/2-3) and y > self.cellSize*(self.canvasRows/2 + 3.25) and 
+            if (x > self.cellSize*(self.canvasCols/2-3) and y > self.cellSize*(self.canvasRows/2 + 3.25) and
                 x < self.cellSize*(self.canvasCols/2+3) and y < self.cellSize*(self.canvasRows/2+4.75)):
                 self.continueClicked = True
-        
+
     def generateMatrix(self):
         self.gx = 55
         self.gy = 3
@@ -214,8 +221,8 @@ class MazeMapPartiallyVisible(BasicAnimationClass):
         self.canvas.create_rectangle(0, 0, self.canvasCols*self.cellSize, self.canvasRows*self.cellSize, fill="white")
         for row in range(yOff, yOff+self.canvasRows):
             for col in range(xOff, xOff+self.canvasCols):
-                if self.matrix[row][col] == 1: 
-                    self.canvas.create_rectangle((col-xOff)*self.cellSize, (row-yOff)*self.cellSize, 
+                if self.matrix[row][col] == 1:
+                    self.canvas.create_rectangle((col-xOff)*self.cellSize, (row-yOff)*self.cellSize,
                         (col-xOff+1)*self.cellSize, (row-yOff+1)*self.cellSize, fill="black")
 
     def goalReached(self):
@@ -231,7 +238,7 @@ class MazeMapPartiallyVisible(BasicAnimationClass):
                 text=" the survey in the other tab using the")
                 self.canvas.create_text(self.cellSize * (self.canvasCols/2), self.cellSize * (self.canvasRows/2 + 2), font="Times 20 bold",
                 text = "following version ID <" + self.versionID + "> and user ID <" + str(self.userID) + ">.")
-                self.canvas.create_rectangle(self.cellSize*(self.canvasCols/2-3), self.cellSize*(self.canvasRows/2 + 3.25), 
+                self.canvas.create_rectangle(self.cellSize*(self.canvasCols/2-3), self.cellSize*(self.canvasRows/2 + 3.25),
                                             self.cellSize*(self.canvasCols/2+3), self.cellSize*(self.canvasRows/2+4.75), fill="green")
                 self.canvas.create_text(self.cellSize * (self.canvasCols/2), self.cellSize * (self.canvasRows/2 +4), font="Times 20 bold",
                 text="Continue")
@@ -284,11 +291,11 @@ class MazeMapPartiallyVisible(BasicAnimationClass):
         self.versionID = self.setVersionID()
         self.planner = TimeOptPlanner(55, 3, self.matrixRows, self.matrixCols, self.matrix)
         self.planner.dijkstra()
-        self.dist = self.planner.dist 
+        self.dist = self.planner.dist
         self.initOptModeArray()
         self.continueClicked = False
-        self.isGoalReached = False 
+        self.isGoalReached = False
         self.app.setTimerDelay(500)
-        
+
 # mapObj = MazeMapPartiallyVisible(1, 1, False)
 # mapObj.run()
