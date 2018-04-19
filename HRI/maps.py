@@ -5,9 +5,7 @@ from timeOptPlanner import TimeOptPlanner
 from random import *
 
 class Map(BasicAnimationClass):
-    def __init__(self, userID, mapID, assistanceType, lastMap):
-        self.userID = userID
-        self.lastMap = lastMap
+    def __init__(self, mapID, assistanceType):
         self.cellSize = 30
         canvasWidth = self.cellSize * 34
         canvasHeight = self.cellSize * 20
@@ -222,24 +220,15 @@ class Map(BasicAnimationClass):
         if self.gx == self.robotPos[0] and self.gy == self.robotPos[1]:
             self.isGoalReached = True
             self.canvas.delete(ALL)
-            if self.lastMap == False:
-                self.canvas.create_text(self.cellSize * (self.cols/2), self.cellSize * (self.rows/2 - 4), font="Times 30 bold",
-                text="You have completed this map!")
-                self.canvas.create_text(self.cellSize * (self.cols/2), self.cellSize * (self.rows/2 - 2), font="Times 30 bold",
-                text="Before clicking continue, please fill out the survey in the")
-                self.canvas.create_text(self.cellSize * (self.cols/2), self.cellSize * (self.rows/2 ), font="Times 30 bold",
-                text="other tab using the following version ID <" + self.versionID + ">")
-                self.canvas.create_text(self.cellSize * (self.cols/2), self.cellSize * (self.rows/2 + 2), font="Times 30 bold",
-                text = "and user ID <" + str(self.userID) + ">.")
-                self.canvas.create_rectangle(self.cellSize*(self.cols/2-3), self.cellSize*(self.rows/2 + 3.25), 
-                                            self.cellSize*(self.cols/2+3), self.cellSize*(self.rows/2+4.75), fill="green")
-                self.canvas.create_text(self.cellSize * (self.cols/2), self.cellSize * (self.rows/2 +4), font="Times 30 bold",
-                text="Continue")
-            else:
-                self.canvas.create_text(self.cellSize * (self.cols/2), self.cellSize * (self.rows/2 - 1), font="Times 30 bold",
-                text="You have completed the study.")
-                self.canvas.create_text(self.cellSize * (self.cols/2), self.cellSize * (self.rows/2 + 1), font="Times 30 bold",
-                text="Thank you for participating!")
+            
+            self.canvas.create_text(self.cellSize * (self.cols/2), self.cellSize * (self.rows/2 - 4), font="Times 30 bold",
+            text="You have completed the practice map!")
+            self.canvas.create_text(self.cellSize * (self.cols/2), self.cellSize * (self.rows/2 - 2), font="Times 30 bold",
+            text="Click continue to begin the study!")
+            self.canvas.create_rectangle(self.cellSize*(self.cols/2-3), self.cellSize*(self.rows/2 + 3.25), 
+                                         self.cellSize*(self.cols/2+3), self.cellSize*(self.rows/2+4.75), fill="green")
+            self.canvas.create_text(self.cellSize * (self.cols/2), self.cellSize * (self.rows/2 +4), font="Times 30 bold",
+            text="Continue")
 
     def redrawAll(self):
         self.canvas.delete(ALL)
@@ -288,7 +277,3 @@ class Map(BasicAnimationClass):
         self.dist = self.planner.dist 
         self.initOptModeArray()
         self.app.setTimerDelay(500)
-
-#map IDs range from 0 to 2
-mapObj = Map(1, 2, 1, False)
-mapObj.run()

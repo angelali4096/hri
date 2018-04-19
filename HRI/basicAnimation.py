@@ -82,7 +82,7 @@ class BasicAnimationRunner(object):
                     self.root.quit()
             except:
                 pass
-            #sys.exit(0)
+            sys.exit(0)
             # self.thread.join()
 
     def __init__(self, appFn, width=300, height=300, **kwargs):
