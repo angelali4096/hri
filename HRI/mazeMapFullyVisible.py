@@ -10,8 +10,8 @@ class MazeMapFullyVisible(BasicAnimationClass):
         self.lastMap = lastMap
         self.rows = 37
         self.cols = 58
-        self.gx = 48
-        self.gy = 19
+        self.gx = 47
+        self.gy = 16
         self.cellSize = 15
         canvasWidth = self.cellSize * self.cols
         canvasHeight = self.cellSize * self.rows
@@ -265,7 +265,7 @@ class MazeMapFullyVisible(BasicAnimationClass):
         self.matrix = self.generateMatrix()
         self.robotPos = (1, 4)
         self.versionID = self.setVersionID()
-        self.planner = TimeOptPlanner(55, 3, self.rows, self.cols, self.matrix)
+        self.planner = TimeOptPlanner(self.gx, self.gy, self.rows, self.cols, self.matrix)
         self.planner.dijkstra()
         self.dist = self.planner.dist
         self.initOptModeArray()
@@ -273,5 +273,5 @@ class MazeMapFullyVisible(BasicAnimationClass):
         self.isGoalReached = False
         self.app.setTimerDelay(500)
 
-mapObj = MazeMapFullyVisible(1, 2, False)
-mapObj.run()
+# mapObj = MazeMapFullyVisible(1, 2, False)
+# mapObj.run()
