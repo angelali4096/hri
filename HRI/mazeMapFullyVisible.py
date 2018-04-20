@@ -10,6 +10,8 @@ class MazeMapFullyVisible(BasicAnimationClass):
         self.lastMap = lastMap
         self.rows = 37
         self.cols = 58
+        self.gx = 48
+        self.gy = 19
         self.cellSize = 15
         canvasWidth = self.cellSize * self.cols
         canvasHeight = self.cellSize * self.rows
@@ -53,8 +55,8 @@ class MazeMapFullyVisible(BasicAnimationClass):
             self.canvas.create_rectangle(x+2, (y+self.cellSize/2)-2, x+self.cellSize-2, (y+self.cellSize/2)+2, fill="yellow")
 
     def drawGoal(self):
-        x = 55 * self.cellSize
-        y = 3 * self.cellSize
+        x = self.gx * self.cellSize
+        y = self.gy * self.cellSize
         self.canvas.create_rectangle(x, y, x+self.cellSize, y+self.cellSize, fill="green")
 
     def moveRobot(self, xChange, yChange):
@@ -118,9 +120,6 @@ class MazeMapFullyVisible(BasicAnimationClass):
                 self.continueClicked = True
 
     def generateMatrix(self):
-        self.gx = 55
-        self.gy = 3
-
         matrix = []
         for row in range(self.rows): matrix += [[0] * self.cols]
 
@@ -274,5 +273,5 @@ class MazeMapFullyVisible(BasicAnimationClass):
         self.isGoalReached = False
         self.app.setTimerDelay(500)
 
-# mapObj = MazeMapFullyVisible(1, 1, False)
-# mapObj.run()
+mapObj = MazeMapFullyVisible(1, 2, False)
+mapObj.run()
