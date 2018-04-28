@@ -1,0 +1,1103 @@
+general info:
+  assistance_type: 1
+  map_id: 1
+  user_id: 203
+move0:
+  keypress: space
+  mode: horizontal
+  time: '1524796023.92'
+  x: '1'
+  y: '4'
+  zone: horizontal
+move1:
+  keypress: Right
+  mode: horizontal
+  time: '1524796024.83'
+  x: '1'
+  y: '4'
+  zone: horizontal
+move2:
+  keypress: Up
+  mode: horizontal
+  time: '1524796025.19'
+  x: '2'
+  y: '4'
+  zone: horizontal
+move3:
+  keypress: space
+  mode: vertical
+  time: '1524796026.48'
+  x: '2'
+  y: '4'
+  zone: horizontal
+move4:
+  keypress: Up
+  mode: vertical
+  time: '1524796026.99'
+  x: '2'
+  y: '3'
+  zone: horizontal
+move5:
+  keypress: Down
+  mode: vertical
+  time: '1524796027.31'
+  x: '2'
+  y: '4'
+  zone: horizontal
+move6:
+  keypress: Down
+  mode: vertical
+  time: '1524796027.56'
+  x: '2'
+  y: '5'
+  zone: horizontal
+move7:
+  keypress: Down
+  mode: vertical
+  time: '1524796027.75'
+  x: '2'
+  y: '6'
+  zone: horizontal
+move8:
+  keypress: Down
+  mode: vertical
+  time: '1524796027.98'
+  x: '2'
+  y: '7'
+  zone: horizontal
+move9:
+  keypress: Down
+  mode: vertical
+  time: '1524796028.13'
+  x: '2'
+  y: '8'
+  zone: horizontal
+move10:
+  keypress: Down
+  mode: vertical
+  time: '1524796028.35'
+  x: '2'
+  y: '9'
+  zone: horizontal
+move11:
+  keypress: Down
+  mode: vertical
+  time: '1524796028.55'
+  x: '2'
+  y: '10'
+  zone: horizontal
+move12:
+  keypress: Down
+  mode: vertical
+  time: '1524796028.75'
+  x: '2'
+  y: '11'
+  zone: horizontal
+move13:
+  keypress: Down
+  mode: vertical
+  time: '1524796028.93'
+  x: '2'
+  y: '12'
+  zone: horizontal
+move14:
+  keypress: Down
+  mode: vertical
+  time: '1524796029.13'
+  x: '2'
+  y: '13'
+  zone: horizontal
+move15:
+  keypress: Down
+  mode: vertical
+  time: '1524796029.35'
+  x: '2'
+  y: '14'
+  zone: horizontal
+move16:
+  keypress: Down
+  mode: vertical
+  time: '1524796029.56'
+  x: '2'
+  y: '15'
+  zone: horizontal
+move17:
+  keypress: Down
+  mode: vertical
+  time: '1524796029.81'
+  x: '2'
+  y: '16'
+  zone: horizontal
+move18:
+  keypress: space
+  mode: horizontal
+  time: '1524796030.88'
+  x: '2'
+  y: '16'
+  zone: horizontal
+move19:
+  keypress: Up
+  mode: horizontal
+  time: '1524796031.13'
+  x: '3'
+  y: '16'
+  zone: horizontal
+move20:
+  keypress: Up
+  mode: horizontal
+  time: '1524796031.35'
+  x: '4'
+  y: '16'
+  zone: horizontal
+move21:
+  keypress: Up
+  mode: horizontal
+  time: '1524796031.55'
+  x: '5'
+  y: '16'
+  zone: horizontal
+move22:
+  keypress: Up
+  mode: horizontal
+  time: '1524796031.75'
+  x: '6'
+  y: '16'
+  zone: horizontal
+move23:
+  keypress: Up
+  mode: horizontal
+  time: '1524796031.99'
+  x: '7'
+  y: '16'
+  zone: horizontal
+move24:
+  keypress: Up
+  mode: horizontal
+  time: '1524796032.19'
+  x: '8'
+  y: '16'
+  zone: horizontal
+move25:
+  keypress: Up
+  mode: horizontal
+  time: '1524796032.48'
+  x: '9'
+  y: '16'
+  zone: horizontal
+move26:
+  keypress: space
+  mode: vertical
+  time: '1524796033.04'
+  x: '9'
+  y: '16'
+  zone: horizontal
+move27:
+  keypress: Down
+  mode: vertical
+  time: '1524796033.23'
+  x: '9'
+  y: '17'
+  zone: horizontal
+move28:
+  keypress: Down
+  mode: vertical
+  time: '1524796033.47'
+  x: '9'
+  y: '18'
+  zone: horizontal
+move29:
+  keypress: Down
+  mode: vertical
+  time: '1524796033.67'
+  x: '9'
+  y: '19'
+  zone: horizontal
+move30:
+  keypress: Down
+  mode: vertical
+  time: '1524796033.88'
+  x: '9'
+  y: '20'
+  zone: horizontal
+move31:
+  keypress: Down
+  mode: vertical
+  time: '1524796034.02'
+  x: '9'
+  y: '21'
+  zone: horizontal
+move32:
+  keypress: Down
+  mode: vertical
+  time: '1524796034.28'
+  x: '9'
+  y: '22'
+  zone: horizontal
+move33:
+  keypress: Down
+  mode: vertical
+  time: '1524796034.48'
+  x: '9'
+  y: '23'
+  zone: horizontal
+move34:
+  keypress: Down
+  mode: vertical
+  time: '1524796034.68'
+  x: '9'
+  y: '24'
+  zone: horizontal
+move35:
+  keypress: space
+  mode: horizontal
+  time: '1524796035.08'
+  x: '9'
+  y: '24'
+  zone: horizontal
+move36:
+  keypress: Left
+  mode: horizontal
+  time: '1524796035.77'
+  x: '9'
+  y: '24'
+  zone: horizontal
+move37:
+  keypress: Down
+  mode: horizontal
+  time: '1524796036.05'
+  x: '8'
+  y: '24'
+  zone: horizontal
+move38:
+  keypress: Down
+  mode: horizontal
+  time: '1524796036.25'
+  x: '7'
+  y: '24'
+  zone: horizontal
+move39:
+  keypress: Down
+  mode: horizontal
+  time: '1524796036.42'
+  x: '6'
+  y: '24'
+  zone: horizontal
+move40:
+  keypress: Down
+  mode: horizontal
+  time: '1524796036.67'
+  x: '5'
+  y: '24'
+  zone: horizontal
+move41:
+  keypress: space
+  mode: vertical
+  time: '1524796036.82'
+  x: '5'
+  y: '24'
+  zone: horizontal
+move42:
+  keypress: Down
+  mode: vertical
+  time: '1524796037.46'
+  x: '5'
+  y: '25'
+  zone: horizontal
+move43:
+  keypress: Down
+  mode: vertical
+  time: '1524796037.67'
+  x: '5'
+  y: '26'
+  zone: horizontal
+move44:
+  keypress: Down
+  mode: vertical
+  time: '1524796037.87'
+  x: '5'
+  y: '27'
+  zone: horizontal
+move45:
+  keypress: Down
+  mode: vertical
+  time: '1524796038.08'
+  x: '5'
+  y: '28'
+  zone: horizontal
+move46:
+  keypress: Down
+  mode: vertical
+  time: '1524796038.28'
+  x: '5'
+  y: '29'
+  zone: horizontal
+move47:
+  keypress: Down
+  mode: vertical
+  time: '1524796038.5'
+  x: '5'
+  y: '30'
+  zone: horizontal
+move48:
+  keypress: Down
+  mode: vertical
+  time: '1524796038.86'
+  x: '5'
+  y: '31'
+  zone: horizontal
+move49:
+  keypress: space
+  mode: horizontal
+  time: '1524796038.97'
+  x: '5'
+  y: '31'
+  zone: horizontal
+move50:
+  keypress: Up
+  mode: horizontal
+  time: '1524796039.34'
+  x: '6'
+  y: '31'
+  zone: horizontal
+move51:
+  keypress: Up
+  mode: horizontal
+  time: '1524796039.74'
+  x: '7'
+  y: '31'
+  zone: horizontal
+move52:
+  keypress: Up
+  mode: horizontal
+  time: '1524796039.93'
+  x: '8'
+  y: '31'
+  zone: horizontal
+move53:
+  keypress: Up
+  mode: horizontal
+  time: '1524796040.17'
+  x: '9'
+  y: '31'
+  zone: horizontal
+move54:
+  keypress: Up
+  mode: horizontal
+  time: '1524796040.68'
+  x: '10'
+  y: '31'
+  zone: horizontal
+move55:
+  keypress: Up
+  mode: horizontal
+  time: '1524796040.78'
+  x: '11'
+  y: '31'
+  zone: horizontal
+move56:
+  keypress: Up
+  mode: horizontal
+  time: '1524796040.87'
+  x: '12'
+  y: '31'
+  zone: horizontal
+move57:
+  keypress: Up
+  mode: horizontal
+  time: '1524796040.94'
+  x: '13'
+  y: '31'
+  zone: horizontal
+move58:
+  keypress: Up
+  mode: horizontal
+  time: '1524796041.03'
+  x: '14'
+  y: '31'
+  zone: horizontal
+move59:
+  keypress: Up
+  mode: horizontal
+  time: '1524796041.12'
+  x: '15'
+  y: '31'
+  zone: horizontal
+move60:
+  keypress: Up
+  mode: horizontal
+  time: '1524796041.21'
+  x: '16'
+  y: '31'
+  zone: horizontal
+move61:
+  keypress: Up
+  mode: horizontal
+  time: '1524796041.55'
+  x: '17'
+  y: '31'
+  zone: horizontal
+move62:
+  keypress: Up
+  mode: horizontal
+  time: '1524796041.75'
+  x: '18'
+  y: '31'
+  zone: horizontal
+move63:
+  keypress: Up
+  mode: horizontal
+  time: '1524796041.92'
+  x: '19'
+  y: '31'
+  zone: horizontal
+move64:
+  keypress: Up
+  mode: horizontal
+  time: '1524796042.17'
+  x: '20'
+  y: '31'
+  zone: horizontal
+move65:
+  keypress: Up
+  mode: horizontal
+  time: '1524796042.37'
+  x: '21'
+  y: '31'
+  zone: horizontal
+move66:
+  keypress: Up
+  mode: horizontal
+  time: '1524796042.59'
+  x: '22'
+  y: '31'
+  zone: horizontal
+move67:
+  keypress: Up
+  mode: horizontal
+  time: '1524796042.84'
+  x: '23'
+  y: '31'
+  zone: horizontal
+move68:
+  keypress: Up
+  mode: horizontal
+  time: '1524796043.15'
+  x: '24'
+  y: '31'
+  zone: horizontal
+move69:
+  keypress: space
+  mode: vertical
+  time: '1524796043.35'
+  x: '24'
+  y: '31'
+  zone: horizontal
+move70:
+  keypress: Up
+  mode: vertical
+  time: '1524796043.6'
+  x: '24'
+  y: '30'
+  zone: horizontal
+move71:
+  keypress: Up
+  mode: vertical
+  time: '1524796043.86'
+  x: '24'
+  y: '29'
+  zone: horizontal
+move72:
+  keypress: Up
+  mode: vertical
+  time: '1524796044.06'
+  x: '24'
+  y: '28'
+  zone: horizontal
+move73:
+  keypress: Up
+  mode: vertical
+  time: '1524796044.27'
+  x: '24'
+  y: '27'
+  zone: horizontal
+move74:
+  keypress: space
+  mode: horizontal
+  time: '1524796044.55'
+  x: '24'
+  y: '27'
+  zone: horizontal
+move75:
+  keypress: Up
+  mode: horizontal
+  time: '1524796044.75'
+  x: '25'
+  y: '27'
+  zone: horizontal
+move76:
+  keypress: Up
+  mode: horizontal
+  time: '1524796044.99'
+  x: '26'
+  y: '27'
+  zone: horizontal
+move77:
+  keypress: Up
+  mode: horizontal
+  time: '1524796045.19'
+  x: '27'
+  y: '27'
+  zone: horizontal
+move78:
+  keypress: Up
+  mode: horizontal
+  time: '1524796045.4'
+  x: '28'
+  y: '27'
+  zone: horizontal
+move79:
+  keypress: Up
+  mode: horizontal
+  time: '1524796045.67'
+  x: '29'
+  y: '27'
+  zone: horizontal
+move80:
+  keypress: Up
+  mode: horizontal
+  time: '1524796045.86'
+  x: '30'
+  y: '27'
+  zone: horizontal
+move81:
+  keypress: Up
+  mode: horizontal
+  time: '1524796046.11'
+  x: '31'
+  y: '27'
+  zone: horizontal
+move82:
+  keypress: space
+  mode: vertical
+  time: '1524796046.37'
+  x: '31'
+  y: '27'
+  zone: horizontal
+move83:
+  keypress: Up
+  mode: vertical
+  time: '1524796046.56'
+  x: '31'
+  y: '26'
+  zone: horizontal
+move84:
+  keypress: Up
+  mode: vertical
+  time: '1524796046.82'
+  x: '31'
+  y: '25'
+  zone: horizontal
+move85:
+  keypress: Up
+  mode: vertical
+  time: '1524796047.02'
+  x: '31'
+  y: '24'
+  zone: horizontal
+move86:
+  keypress: Up
+  mode: vertical
+  time: '1524796047.28'
+  x: '31'
+  y: '23'
+  zone: horizontal
+move87:
+  keypress: Up
+  mode: vertical
+  time: '1524796047.5'
+  x: '31'
+  y: '22'
+  zone: horizontal
+move88:
+  keypress: Up
+  mode: vertical
+  time: '1524796047.7'
+  x: '31'
+  y: '21'
+  zone: horizontal
+move89:
+  keypress: Up
+  mode: vertical
+  time: '1524796047.91'
+  x: '31'
+  y: '20'
+  zone: horizontal
+move90:
+  keypress: Up
+  mode: vertical
+  time: '1524796048.13'
+  x: '31'
+  y: '19'
+  zone: horizontal
+move91:
+  keypress: space
+  mode: horizontal
+  time: '1524796048.34'
+  x: '31'
+  y: '19'
+  zone: horizontal
+move92:
+  keypress: Up
+  mode: horizontal
+  time: '1524796048.63'
+  x: '32'
+  y: '19'
+  zone: horizontal
+move93:
+  keypress: Up
+  mode: horizontal
+  time: '1524796048.88'
+  x: '33'
+  y: '19'
+  zone: horizontal
+move94:
+  keypress: Up
+  mode: horizontal
+  time: '1524796049.14'
+  x: '34'
+  y: '19'
+  zone: horizontal
+move95:
+  keypress: Up
+  mode: horizontal
+  time: '1524796049.34'
+  x: '35'
+  y: '19'
+  zone: horizontal
+move96:
+  keypress: Up
+  mode: horizontal
+  time: '1524796049.54'
+  x: '36'
+  y: '19'
+  zone: horizontal
+move97:
+  keypress: Up
+  mode: horizontal
+  time: '1524796049.8'
+  x: '37'
+  y: '19'
+  zone: horizontal
+move98:
+  keypress: Up
+  mode: horizontal
+  time: '1524796050.01'
+  x: '38'
+  y: '19'
+  zone: horizontal
+move99:
+  keypress: space
+  mode: vertical
+  time: '1524796050.2'
+  x: '38'
+  y: '19'
+  zone: horizontal
+move100:
+  keypress: Down
+  mode: vertical
+  time: '1524796050.47'
+  x: '38'
+  y: '20'
+  zone: horizontal
+move101:
+  keypress: Down
+  mode: vertical
+  time: '1524796050.74'
+  x: '38'
+  y: '21'
+  zone: horizontal
+move102:
+  keypress: Down
+  mode: vertical
+  time: '1524796050.99'
+  x: '38'
+  y: '22'
+  zone: horizontal
+move103:
+  keypress: Down
+  mode: vertical
+  time: '1524796051.36'
+  x: '38'
+  y: '23'
+  zone: horizontal
+move104:
+  keypress: space
+  mode: horizontal
+  time: '1524796051.65'
+  x: '38'
+  y: '23'
+  zone: horizontal
+move105:
+  keypress: Up
+  mode: horizontal
+  time: '1524796051.85'
+  x: '39'
+  y: '23'
+  zone: horizontal
+move106:
+  keypress: Up
+  mode: horizontal
+  time: '1524796052.09'
+  x: '40'
+  y: '23'
+  zone: horizontal
+move107:
+  keypress: Up
+  mode: horizontal
+  time: '1524796052.34'
+  x: '41'
+  y: '23'
+  zone: horizontal
+move108:
+  keypress: Up
+  mode: horizontal
+  time: '1524796052.51'
+  x: '42'
+  y: '23'
+  zone: horizontal
+move109:
+  keypress: Up
+  mode: horizontal
+  time: '1524796052.77'
+  x: '43'
+  y: '23'
+  zone: horizontal
+move110:
+  keypress: Up
+  mode: horizontal
+  time: '1524796052.96'
+  x: '44'
+  y: '23'
+  zone: horizontal
+move111:
+  keypress: Up
+  mode: horizontal
+  time: '1524796053.17'
+  x: '45'
+  y: '23'
+  zone: horizontal
+move112:
+  keypress: Up
+  mode: horizontal
+  time: '1524796053.38'
+  x: '46'
+  y: '23'
+  zone: horizontal
+move113:
+  keypress: space
+  mode: vertical
+  time: '1524796053.53'
+  x: '46'
+  y: '23'
+  zone: horizontal
+move114:
+  keypress: Down
+  mode: vertical
+  time: '1524796053.73'
+  x: '46'
+  y: '24'
+  zone: horizontal
+move115:
+  keypress: Down
+  mode: vertical
+  time: '1524796054.02'
+  x: '46'
+  y: '25'
+  zone: horizontal
+move116:
+  keypress: Down
+  mode: vertical
+  time: '1524796054.28'
+  x: '46'
+  y: '26'
+  zone: horizontal
+move117:
+  keypress: Down
+  mode: vertical
+  time: '1524796054.49'
+  x: '46'
+  y: '27'
+  zone: horizontal
+move118:
+  keypress: Down
+  mode: vertical
+  time: '1524796054.69'
+  x: '46'
+  y: '28'
+  zone: horizontal
+move119:
+  keypress: Down
+  mode: vertical
+  time: '1524796054.89'
+  x: '46'
+  y: '29'
+  zone: horizontal
+move120:
+  keypress: Down
+  mode: vertical
+  time: '1524796055.07'
+  x: '46'
+  y: '30'
+  zone: horizontal
+move121:
+  keypress: Down
+  mode: vertical
+  time: '1524796055.27'
+  x: '46'
+  y: '31'
+  zone: horizontal
+move122:
+  keypress: space
+  mode: horizontal
+  time: '1524796055.47'
+  x: '46'
+  y: '31'
+  zone: horizontal
+move123:
+  keypress: Up
+  mode: horizontal
+  time: '1524796055.63'
+  x: '47'
+  y: '31'
+  zone: horizontal
+move124:
+  keypress: Up
+  mode: horizontal
+  time: '1524796055.89'
+  x: '48'
+  y: '31'
+  zone: horizontal
+move125:
+  keypress: Up
+  mode: horizontal
+  time: '1524796056.12'
+  x: '49'
+  y: '31'
+  zone: horizontal
+move126:
+  keypress: Up
+  mode: horizontal
+  time: '1524796056.32'
+  x: '50'
+  y: '31'
+  zone: horizontal
+move127:
+  keypress: Up
+  mode: horizontal
+  time: '1524796056.53'
+  x: '51'
+  y: '31'
+  zone: horizontal
+move128:
+  keypress: Up
+  mode: horizontal
+  time: '1524796056.73'
+  x: '52'
+  y: '31'
+  zone: horizontal
+move129:
+  keypress: space
+  mode: vertical
+  time: '1524796056.87'
+  x: '52'
+  y: '31'
+  zone: horizontal
+move130:
+  keypress: Up
+  mode: vertical
+  time: '1524796057.17'
+  x: '52'
+  y: '30'
+  zone: horizontal
+move131:
+  keypress: Up
+  mode: vertical
+  time: '1524796057.36'
+  x: '52'
+  y: '29'
+  zone: horizontal
+move132:
+  keypress: Up
+  mode: vertical
+  time: '1524796057.52'
+  x: '52'
+  y: '28'
+  zone: horizontal
+move133:
+  keypress: Up
+  mode: vertical
+  time: '1524796057.77'
+  x: '52'
+  y: '27'
+  zone: horizontal
+move134:
+  keypress: Up
+  mode: vertical
+  time: '1524796058.05'
+  x: '52'
+  y: '26'
+  zone: horizontal
+move135:
+  keypress: Up
+  mode: vertical
+  time: '1524796058.24'
+  x: '52'
+  y: '25'
+  zone: horizontal
+move136:
+  keypress: Up
+  mode: vertical
+  time: '1524796058.45'
+  x: '52'
+  y: '24'
+  zone: horizontal
+move137:
+  keypress: Up
+  mode: vertical
+  time: '1524796058.65'
+  x: '52'
+  y: '23'
+  zone: horizontal
+move138:
+  keypress: Up
+  mode: vertical
+  time: '1524796058.86'
+  x: '52'
+  y: '22'
+  zone: horizontal
+move139:
+  keypress: Up
+  mode: vertical
+  time: '1524796059.09'
+  x: '52'
+  y: '21'
+  zone: horizontal
+move140:
+  keypress: Up
+  mode: vertical
+  time: '1524796059.34'
+  x: '52'
+  y: '20'
+  zone: horizontal
+move141:
+  keypress: Up
+  mode: vertical
+  time: '1524796059.56'
+  x: '52'
+  y: '19'
+  zone: horizontal
+move142:
+  keypress: Up
+  mode: vertical
+  time: '1524796059.82'
+  x: '52'
+  y: '18'
+  zone: horizontal
+move143:
+  keypress: Up
+  mode: vertical
+  time: '1524796060.12'
+  x: '52'
+  y: '17'
+  zone: horizontal
+move144:
+  keypress: space
+  mode: horizontal
+  time: '1524796060.58'
+  x: '52'
+  y: '17'
+  zone: horizontal
+move145:
+  keypress: Up
+  mode: horizontal
+  time: '1524796061.2'
+  x: '53'
+  y: '17'
+  zone: horizontal
+move146:
+  keypress: Up
+  mode: horizontal
+  time: '1524796061.45'
+  x: '54'
+  y: '17'
+  zone: horizontal
+move147:
+  keypress: Left
+  mode: horizontal
+  time: '1524796061.97'
+  x: '54'
+  y: '17'
+  zone: horizontal
+move148:
+  keypress: Down
+  mode: horizontal
+  time: '1524796062.4'
+  x: '53'
+  y: '17'
+  zone: horizontal
+move149:
+  keypress: Down
+  mode: horizontal
+  time: '1524796062.64'
+  x: '52'
+  y: '17'
+  zone: horizontal
+move150:
+  keypress: Down
+  mode: horizontal
+  time: '1524796062.84'
+  x: '51'
+  y: '17'
+  zone: horizontal
+move151:
+  keypress: Down
+  mode: horizontal
+  time: '1524796063.04'
+  x: '50'
+  y: '17'
+  zone: horizontal
+move152:
+  keypress: Down
+  mode: horizontal
+  time: '1524796063.25'
+  x: '49'
+  y: '17'
+  zone: horizontal
+move153:
+  keypress: Down
+  mode: horizontal
+  time: '1524796063.46'
+  x: '48'
+  y: '17'
+  zone: horizontal
+move154:
+  keypress: Down
+  mode: horizontal
+  time: '1524796063.69'
+  x: '47'
+  y: '17'
+  zone: horizontal
+move155:
+  keypress: space
+  mode: vertical
+  time: '1524796064.14'
+  x: '47'
+  y: '17'
+  zone: horizontal
+move156:
+  keypress: Up
+  mode: vertical
+  time: '1524796064.34'
+  x: '47'
+  y: '16'
+  zone: horizontal
