@@ -1,5 +1,4 @@
-# basicAnimationClass.py
-# version 0.5
+# This code has been adapted from http://www.kosbie.net/cmu/fall-14/15-112/
 
 from Tkinter import *
 from basicAnimation import BasicAnimationRunner
