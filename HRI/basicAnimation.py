@@ -1,44 +1,4 @@
-# basicAnimation.py (for CMU 15-112)
-# version 0.5
-
-# @TODO:
-# immediate rather than deferred errors, say: create_line(range(100))
-
-# Change log:
-# 0.5: added optional keyword arguments passed through to appFn
-# 0.5: fixed crash ("fn not defined") on reporting exception in canvas getattr
-# 0.5: eliminated error on exit (just quit on WM_DESTROY_WINDOW, then destroy in canvas.after)
-# 0.5: new, improved timerFired design (with separate timerFired thread)
-# 0.4: added canvas.data Struct to wrapped canvas and basicAnimationDemo2.py
-# 0.4: no hang when canvas methods called without getEvent
-# 0.4: copy parameters on wrapped canvas calls to avoid destructive changes afterwards 
-# 0.3: better error message on canvas.fn error
-
-################################################
-#
-# See basicAnimationDemo.py for user documentation
-#
-# The code in this file is not intended for 112 students to
-# even look at, let alone understand!
-#
-# For those who care, this code coerces Tkinter to let
-# us use it from an external thread.  Then, we pretend
-# this didn't happen, so that a programmer can use
-# Tkinter graphics along with mouse, keyboard, and
-# timer-based interactivity in what feels like a traditional,
-# single-threaded, non-event-based, non-object-based way.
-#
-# We do this to get some simple interactive graphics into
-# the early part of the course.  We absolutely double back
-# later and do interactive graphics the "right" way,
-# event-based and object-oriented.  And then, for the highly
-# motivated, we may even explore all the yuck that went
-# into this file to make their "simple" projects work at all.  :-)
-#
-# Bottom line: really nobody should ever use this code for
-# anything beyond some really simple examples early on in a
-# first programming course.
-################################################
+# This code has been adapted from http://www.kosbie.net/cmu/fall-14/15-112/
 
 from Tkinter import *
 from Queue import Queue
