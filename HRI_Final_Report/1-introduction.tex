@@ -1,0 +1,47 @@
+\section{Introduction}
+\label{sec:intro}
+
+Assistive healthcare robotic arms are promising in that they increase the freedom and abilities of people who lack dexterity. These high-dimensional robot arms are often controlled by a low-dimensional joystick input and requires switching modes. Each mode controls a subset of the degrees of freedom of the robot. However, changing modes is a harmful distraction that impedes efficient control~\cite{herlant2016assistive}. \textit{The goal of the project is to improve the performance of completing tasks, with robot assistance, while maintaining user trust.} Herlant et. al proposed a simple model to automatically switch modes that increases user satisfaction while maintaining performance~\cite{herlant2016assistive}. 
+
+This project is an extension of Herlant et. al's work that incorporate two areas of Human-Robot Interaction: \textbf{algorithmic design} and \textbf{user studies}. Our work analyzes user trust, in assistive teleoperation that uses time-optimal mode switching, as the user's visibility of the environment varies. 
+
+%We extended Herlant et. al's time-optimal mode switching algorithm to be more efficient as it is scaled to higher dimensional robots.  
+
+The remainder of the report will be structured as follows: we provide a brief overview of current work in assistive teleoperation and maintaining user trust~(\sref{sec:related_work}). In~\sref{sec:background} we present our extension of Herlant et. al's time-optiaml mode switching algorithm. Then we discuss our user study design~(\sref{sec:approach}) and the design of the interface used in the study~(\sref{sec:user_interface_design}). Finally, we provide a description of our experiments and results~(\sref{sec:experiments}) and a discussion of the limitations and potential future directions~(\sref{sec:conclusion}).
+
+% \begin{figure}[t!]
+%     \captionsetup[subfigure]{position=top,textfont=scriptsize,singlelinecheck=off,justification=centering,aboveskip=0pt,margin=0pt,labelfont={color=white}}
+    
+%     \centering
+%     \vspace{-1.0em}
+%     \subfloat[]{
+%         \includegraphics[width=\columnwidth]{figs/hbsp_split_1}
+%         \label{fig:hbsp_split_1}      
+%     }
+%     \vspace{-2.0em}
+%     \newline
+%     \subfloat[]{
+%         \includegraphics[width=\columnwidth]{figs/hbsp_split_2} 
+%         \label{fig:hbsp_split_2}
+%     }
+%     \vspace{-2.5em}
+%     \newline
+%     \subfloat[]{
+%         \includegraphics[width=\columnwidth]{figs/hbsp_split_3} 
+%         \label{fig:hbsp_split_3}
+%     }
+%     \newline
+%     \vspace{-2.0em}
+%     \subfloat[]{
+%         \includegraphics[width=\columnwidth]{figs/hbsp_split_4} 
+%         \label{fig:hbsp_split_4}
+%     }
+%     \caption{\protect\subref{fig:hbsp_split_1} A humanoid robot has to navigate to a goal region denoted by the green cylinder.~\protect\subref{fig:hbsp_split_2} A user provides two reference paths in a 2D projection of the workspace.~\protect\subref{fig:hbsp_split_3} A color map of the heuristic values for each homotopy-based heuristic. A single heuristic is constructed for each homotopy class of the reference paths.~\protect\subref{fig:hbsp_split_4} The footstep planner uses both heuristics to quickly find a path to the goal region.}
+%     \vspace{-0.5em}
+%     \label{fig:baseline_v_homotopic}
+% \end{figure}
+
+
+
+
+

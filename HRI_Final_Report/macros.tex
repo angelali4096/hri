@@ -1,0 +1,166 @@
+\def\frechet{Fr\'echet\xspace}
+
+
+\newcommand{\eref}[1]{Eq.~(\ref{#1})} % Equation
+\newcommand{\sref}[1]{Sec.~\ref{#1}} % Section
+\newcommand{\figref}[1]{Fig.~\ref{#1}} % Figure
+\newcommand{\subfigref}[2]{\figref{#1}.\subref*{#2}} % Figure
+\newcommand{\aref}[1]{Alg.~\ref{#1}} % Algorithm
+\newcommand{\lineref}[1]{Line~\ref{#1}} % Algorithm line
+\newcommand{\linesref}[2]{Lines~\ref{#1}-\ref{#2}} % Algorithm lines
+\newcommand{\alglineref}[2]{\aref{#1}, line~\ref{#2}} % Alg-line
+\newcommand{\alglinesref}[3]{\aref{#1}, lines~\ref{#2}-\ref{#3}} % Alg-lines
+\newcommand{\Linesref}[3]{Lines~\ref{#1},~\ref{#2}-\ref{#3}} % Alg-lines
+\newcommand{\Linessref}[3]{Lines~\ref{#1}-\ref{#2},~\ref{#3}} % Alg-lines
+\newcommand{\algLinesref}[4]{Alg.~\ref{#1}, lines~\ref{#2},~\ref{#3}-\ref{#4}} % Alg-lines
+\newcommand{\tabref}[1]{Tab.\ref{#1}} % Table
+\newcommand{\tablineref}[2]{\tabref{#1}\subref*{2}}
+\newcommand{\propref}[1]{\textbf{P.\ref{#1}}} % Property
+\newcommand{\hyp}[1]{\textbf{H.\ref{#1}}} % Hypothesis
+\newcommand{\ques}[1]{\textbf{Q.\ref{#1}}} 
+\newcommand{\hset}[1]{\textbf{S.\ref{#1}}}
+\newcommand{\thref}[1]{Theor.\ref{#1}} %Theorem
+
+% Notation
+% Example: \newcommand{\Xfree}{X_{free}}
+
+% Math symbols
+\newcommand{\argmin}{\operatornamewithlimits{argmin}}
+\newcommand{\argmax}{\operatornamewithlimits{argmax}}
+
+% Subsubsection
+\newcommand{\littlesection}[1]{\vspace{0.25in}\noindent\textbf{\textit{#1}}\\}
+\newcommand{\littlersection}[1]{\vspace{0.25in}\noindent\textit{#1}\\\vspace{0.1in}}
+
+\newcommand{\cupdot}{\mathbin{\mathaccent\cdot\cup}}
+
+%unlabeled PSPACE-hardness paper
+\newcommand{\mtm}{\emph{multi-to-multi}\xspace}
+\newcommand{\mts}{\emph{multi-to-single}\xspace}
+\newcommand{\sts}{\emph{multi-to-single-restricted}\xspace}
+\newcommand{\dtd}{\emph{single-to-single}\xspace}
+
+\newcommand{\cte}{\emph{full-to-edge}\xspace}
+\newcommand{\ctc}{\emph{full-to-full}\xspace}
+\newcommand{\ete}{\emph{edge-to-edge}\xspace}
+
+\newcommand{\AND}{{\sc and}\xspace}
+\newcommand{\OR}{{\sc or}\xspace}
+
+%tex tools
+\newcommand{\ignore}[1]{}
+
+%%% algorithms
+\def\vor{\text{Vor}}
+
+\def\P{\mathcal{P}} \def\C{\mathcal{C}} \def\H{\mathcal{H}}
+\def\F{\mathcal{F}} \def\U{\mathcal{U}} \def\L{\mathcal{L}}
+\def\O{\mathcal{O}} \def\I{\mathcal{I}} \def\E{\mathcal{E}}
+\def\S{\mathcal{S}} \def\G{\mathcal{G}} \def\Q{\mathcal{Q}}
+\def\I{\mathcal{I}} \def\T{\mathcal{T}} \def\L{\mathcal{L}}
+\def\N{\mathcal{N}} \def\V{\mathcal{V}} \def\B{\mathcal{B}}
+\def\D{\mathcal{D}} \def\W{\mathcal{W}} \def\R{\mathcal{R}}
+\def\M{\mathcal{M}} \def\X{\mathcal{X}} \def\A{\mathcal{A}}
+\def\Y{\mathcal{Y}} \def\L{\mathcal{L}}
+
+\def\dS{\mathbb{S}} \def\dT{\mathbb{T}} \def\dC{\mathbb{C}}
+\def\dG{\mathbb{G}} \def\dD{\mathbb{D}} \def\dV{\mathbb{V}}
+\def\dH{\mathbb{H}} \def\dN{\mathbb{N}} \def\dE{\mathbb{E}}
+\def\dR{\mathbb{R}} \def\dM{\mathbb{M}} \def\dm{\mathbb{m}}
+\def\dB{\mathbb{B}} \def\dI{\mathbb{I}} \def\dM{\mathbb{M}}
+
+\def\eps{\varepsilon}
+\def\obs{\mathrm{obs}}
+
+\newcommand{\sbs}{sampling-based\xspace}
+\newcommand{\mr}{multi-robot\xspace}
+\newcommand{\mpl}{motion planning\xspace}
+\newcommand{\cs}{configuration space\xspace}
+\newcommand{\conf}{configuration\xspace}
+\newcommand{\confs}{configurations\xspace}
+\newcommand{\etal}{et al.\xspace}
+
+% programming
+\newcommand{\Cpp}{C\raise.08ex\hbox{\tt ++}\xspace}
+
+
+
+\newcommand{\ch}{\mathrm{ch}}
+\newcommand{\pspace}{{\sc pspace}\xspace}
+\newcommand{\np}{{\sc np}\xspace}
+\newcommand{\degree}{\ensuremath{^\circ}}
+
+
+\newcommand{\dist}{\textup{dist}}
+
+\newcommand{\Cfree}{\C_{\textup{free}}}
+\newcommand{\Cforb}{\C_{\textup{forb}}}
+
+\newtheorem{lemma}{Lemma}
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}{Corollary}
+\newtheorem{claim}{Claim}
+
+\def\os#1{\textcolor{blue}{#1}}
+\def\gs#1{\textcolor{darkgreen}{#1}}
+\def\ps#1{\textcolor{purple}{#1}}
+\def\HiLi{\leavevmode\rlap{\noindent\hbox to 0.9\columnwidth{\color{yellow!50}\leaders\hrule height 0.8\baselineskip depth .8ex\hfill}}}
+
+\newcommand\algname[1]{\textsf{#1}\xspace}
+\newcommand\mhastar{\algname{MHA*}}
+\newcommand\smhastar{\algname{SMHA*}}
+\newcommand\imhastar{\algname{IMHA*}}
+\newcommand\hbsp{\algname{HBSP}}
+\newcommand\astar{\algname{A*}}
+
+\newcommand{\qs}{\ensuremath{q_{\text{source}}}\xspace}
+\newcommand{\qg}{\ensuremath{q_{\text{goal}}}\xspace}
+
+% Spaces
+\newcommand{\Cfoot}{\ensuremath{\mathcal{X}_{\text{footstep}}}\xspace}
+\newcommand{\Crob}{\ensuremath{\mathcal{X}_{\text{robot}}}\xspace}
+\newcommand{\Wproj}{\ensuremath{\mathcal{W}_{2}}\xspace}
+\newcommand{\Wwork}{\ensuremath{\mathcal{W}_{3}}\xspace}
+%
+\newcommand{\Gfoot}{\ensuremath{\mathcal{G}_{\Cfoot}}\xspace}
+\newcommand{\Vfoot}{\ensuremath{\mathcal{V}_{\Cfoot}}\xspace}
+\newcommand{\Efoot}{\ensuremath{\mathcal{E}_{\Cfoot}}\xspace}
+%
+\newcommand{\Gproj}{\ensuremath{\mathcal{G}_{\Wproj}}\xspace}
+\newcommand{\Vproj}{\ensuremath{\mathcal{V}_{\Wproj}}\xspace}
+\newcommand{\Eproj}{\ensuremath{\mathcal{E}_{\Wproj}}\xspace}
+%
+%\newcommand{\GprojS}{\ensuremath{\mathcal{G}_{\Wproj \times S}}\xspace}
+%\newcommand{\VprojS}{\ensuremath{\mathcal{V}_{\Wproj \times S}}\xspace}
+%\newcommand{\EprojS}{\ensuremath{\mathcal{E}_{\Wproj \times S}}\xspace}
+%
+\newcommand{\GprojS}{\ensuremath{\mathcal{G}_{\Wproj}^h}\xspace}
+\newcommand{\VprojS}{\ensuremath{\mathcal{V}_{\Wproj}^h}\xspace}
+\newcommand{\EprojS}{\ensuremath{\mathcal{E}_{\Wproj}^h}\xspace}
+%
+\newcommand{\GfootS}{\ensuremath{\mathcal{G}_{\Cfoot}^h}\xspace}
+\newcommand{\VfootS}{\ensuremath{\mathcal{V}_{\Cfoot}^h}\xspace}
+\newcommand{\EfootS}{\ensuremath{\mathcal{E}_{\Cfoot}^h}\xspace}
+%
+%\newcommand{\GfootS}{\ensuremath{\mathcal{G}_{\Cfoot \times S}}\xspace}
+%\newcommand{\VfootS}{\ensuremath{\mathcal{V}_{\Cfoot \times S}}\xspace}
+%\newcommand{\EfootS}{\ensuremath{\mathcal{E}_{\Cfoot \times S}}\xspace}
+
+\makeatletter
+\def\thmhead@plain#1#2#3{%
+  \thmname{#1}\thmnumber{\@ifnotempty{#1}{ }\@upn{#2}}%
+  \thmnote{ {\the\thm@notefont#3}}}
+\let\thmhead\thmhead@plain
+\makeatother
+
+\def\todo#1{\textcolor{blue}{\textbf{TODO:} #1}}
+\def\new#1{\textcolor{magenta}{#1}}
+\def\old#1{\textcolor{red}{#1}}
+
+\def\removed#1{\textcolor{green}{#1}}
+%\def\removed#1{}
+%%% Local Variables:
+%%% mode: plain-tex
+%%% TeX-master: "main"
+%%% End:
+\algrenewcommand\textproc{}

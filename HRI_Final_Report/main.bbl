@@ -1,0 +1,39 @@
+\begin{thebibliography}{}
+
+\bibitem[\protect\citeauthoryear{Admoni}{2018}]{modes}
+Admoni, H.
+\newblock 2018.
+\newblock Kinova jaco modes.
+
+\bibitem[\protect\citeauthoryear{Atkinson, Clancey, and
+  Clark}{2014}]{atkinson2014shared}
+Atkinson, D.~J.; Clancey, W.~J.; and Clark, M.~H.
+\newblock 2014.
+\newblock Shared awareness, autonomy and trust in human-robot teamwork.
+\newblock In {\em Artificial Intelligence and Human-Computer Interaction:
+  Papers from the 2014 AAAI Spring Symposium}.
+
+\bibitem[\protect\citeauthoryear{Herlant, Holladay, and
+  Srinivasa}{2016}]{herlant2016assistive}
+Herlant, L.~V.; Holladay, R.~M.; and Srinivasa, S.~S.
+\newblock 2016.
+\newblock Assistive teleoperation of robot arms via automatic time-optimal mode
+  switching.
+\newblock In {\em The Eleventh ACM/IEEE International Conference on Human Robot
+  Interaction}.
+\newblock IEEE Press.
+
+\bibitem[\protect\citeauthoryear{Robotics}{2016}]{kinova}
+Robotics, K.
+\newblock 2016.
+\newblock Jaco assistive robotic device: Empowering people with disabilities
+  through innovative algorithms.
+
+\bibitem[\protect\citeauthoryear{Yagoda and Gillan}{2012}]{yagoda2012you}
+Yagoda, R.~E., and Gillan, D.~J.
+\newblock 2012.
+\newblock You want me to trust a robot? the development of a human--robot
+  interaction trust scale.
+\newblock {\em International Journal of Social Robotics}.
+
+\end{thebibliography}

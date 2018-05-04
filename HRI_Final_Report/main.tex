@@ -1,0 +1,184 @@
+\def\year{2018}\relax
+%File: formatting-instruction.tex
+\documentclass[letterpaper]{article} %DO NOT CHANGE THIS
+\usepackage{aaai18}  %Required
+\usepackage{times}  %Required
+\usepackage{helvet}  %Required
+\usepackage{courier}  %Required
+\usepackage{url}  %Required
+\usepackage{graphicx}  %Required
+\frenchspacing  %Required
+\setlength{\pdfpagewidth}{8.5in}  %Required
+\setlength{\pdfpageheight}{11in}  %Required
+
+\usepackage{algorithm}
+\usepackage{algorithmicx}
+\usepackage[noend]{algpseudocode}
+\usepackage{amsmath}
+\usepackage{amssymb}  % assumes amsmath package installed
+\usepackage{xpatch}
+\usepackage{soul}
+%\usepackage[linesnumbered,ruled]{algorithm2e}
+%%\usepackage{bbm}
+\usepackage{graphicx}
+\usepackage{import}
+\usepackage{url}
+\usepackage{hyperref}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{pgfplots}
+\usepackage[per-mode=symbol]{siunitx}
+\usepackage[caption=true,labelformat=parens]{subfig}
+\usepackage{tikz}
+\usetikzlibrary{fit,calc}
+\newcommand*{\tikzmk}[1]{\tikz[remember picture,overlay,] \node (#1) {};\ignorespaces}
+%define a boxing command, argument = colour of box
+\newcommand{\boxit}[1]{\tikz[remember picture,overlay]{\node[fill=#1,opacity=.25,fit={($(A)-(0.1,0.5\baselineskip)$)($(B)-(0.64\columnwidth,0.0)$)}] {};}\ignorespaces}
+
+%define some colours according to algorithm parts (or any other method you like)
+\colorlet{pink}{red!40}
+\colorlet{cyan}{cyan!60}
+
+\usepackage{color}
+\usepackage{xspace}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{sidecap}
+
+% set colors for code background and highlighting
+\definecolor{codehighlight}{rgb}{0.95,0.8,0.8}
+\definecolor{codebackground}{rgb}{0.95,0.95,0.95}
+
+\definecolor{complexbox}{rgb}{0.42,0.83,0.84}
+\definecolor{trivialbox}{rgb}{0.98,0.64,0.61}
+\definecolor{complexscatter}{rgb}{0.54,0.059,0}
+\definecolor{trivialscatter}{rgb}{0.0039,0.09,0.55}
+%%\usepackage{texcomp, libertine}
+
+\captionsetup{belowskip=0pt}
+
+\definecolor{orange}{rgb}{0.8,0.4,0}
+\definecolor{mylink}{RGB}{18,68,115}
+\definecolor{darkgreen}{rgb}{0.3,0.6,0.3}
+
+\DeclareCaptionFont{green}{darkgreen}
+\algrenewcommand{\alglinenumber}[1]{\footnotesize\textrm{#1:}}
+
+% Insert hyperlinks in the document
+\hypersetup{letterpaper,bookmarksopen,bookmarksnumbered,
+pdfpagemode=UseOutlines,
+colorlinks=true,
+linkcolor=blue,
+anchorcolor=blue,
+citecolor=blue,
+filecolor=blue,
+menucolor=blue,
+urlcolor=blue
+}
+
+% Algorithm commands
+% \algnewcommand\algorithmicforeach{
+%   \textbf{for each}}
+%   \algdef{S}[FOR]{ForEach}[1]{\algorithmicforeach\ #1\ 
+% \algorithmicdo}
+
+\newenvironment{colorline}[1][]{
+	\algrenewcommand{\algline}[1]{\textcolor{blue}}
+}
+
+% Hypothesis
+\newcounter{hypothesis}[section]
+\newenvironment{hypothesis}[1][]
+{ \refstepcounter{hypothesis}\par\medskip
+\textbf{H.\thehypothesis} #1 \rmfamily}{\medskip}
+
+% Questions
+\newcounter{question}[section]
+\newenvironment{question}[1][]
+{ \refstepcounter{question}\par\smallskip
+\textbf{Q.\thequestion} #1 \rmfamily}{\vspace{0.5ex}}
+
+% Sets
+
+\import{./}{macros.tex}
+\newcounter{set}[section]
+\newenvironment{set}[1][]
+{ \refstepcounter{set}\par\vspace{0.3ex}
+\textbf{S.\theset} #1 \rmfamily}{\vspace{0.3ex}}
+
+% Color patches in captions
+\definecolor{planned}{HTML}{31a354}
+\definecolor{random}{HTML}{636363}
+\definecolor{learned}{HTML}{a6611a}
+\definecolor{basic}{HTML}{756bb2}
+\definecolor{pcrrt}{HTML}{3182bd}
+\definecolor{brrt}{HTML}{e6550d}
+\newcommand{\CaptionLine}[1]{\raisebox{2pt}{\tikz{\draw[-,#1, solid, line width=0.9pt](0,0) -- (2mm,0);}}}
+\newcommand{\CaptionCircle}[1]{\tikz{\draw[#1,fill=#1] (0,0) circle (.5ex);}}
+
+\makeatletter
+\def\endthebibliography{%
+  \def\@noitemerr{\@latex@warning{Empty `thebibliography' environment}}%
+  \endlist
+}
+\makeatother
+
+
+%PDF Info Is Required:
+% \pdfinfo{
+% /Title (Effective Footstep Planning for Humanoids Using Homotopy-Class Guidance)
+% /Author (Vinitha Ranganeni, Oren Salzman, Maxim Likhachev)}
+\setcounter{secnumdepth}{2} 
+\begin{document}
+% The file aaai.sty is the style file for AAAI Press 
+% proceedings, working notes, and technical reports.
+%
+\title{Understanding Human Trust in Assistive Teleopertion}
+\author{Maunika~Atmakuri, Annie~Black, Angela~Li, Vinitha~Ranganeni, Daphne~Tan\\
+\{matmakur, ablack, qingyanl, vrangane, hdtan\}@andrew.cmu.edu}
+\maketitle
+
+%% Introduction
+\import{./}{1-introduction.tex}
+
+%% Related work
+\import{./}{2-related_work.tex}
+
+%% Background
+\import{./}{3-algorithmic_contribution.tex}
+
+%% Results
+\import{./}{5-user_interface_design.tex}
+
+%% Approach
+\import{./}{4-study_design.tex}
+
+%% Conclusion and Future work
+\import{./}{6-experiments.tex}
+
+%% Acknowledgments
+\import{./}{7-conclusion.tex}
+
+%%\addtolength{\textheight}{-12cm}   % This command serves to balance the column lengths
+                                  % on the last page of the document manually. It shortens
+                                  % the textheight of the last page by a suitable amount.
+                                  % This command does not take effect until the next page
+                                  % so it should come on the page before the last. Make
+                                  % sure that you do not shorten the textheight too much.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\bibliography{references}
+\bibliographystyle{aaai}
+
+\end{document}
