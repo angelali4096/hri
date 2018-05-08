@@ -9,14 +9,6 @@ The domain we are exploring is assistive healthcare robotic arms. These high-dim
 - **Automatic**: The robot automatically switches the mode whenever it enters a new region based determined by an optimality map. This change happens the first time the robot enters the zone. The user can change the mode as they please..
 - **Forced**:  The robot automatically switches the mode to the time-optimal mode. However, after every action the user took, the robot would switch back to the time-optimal mode. 
 
-### Study Design/Structure
-We extended Herlant et. al's work by examining the user's trust with each assistance type based on the visbility of the environment they were navigating the robot through.
-
-The design/structure of our user study is as follows:
-- **Simple Map**: The first map is for a practice so that the user can familiarize themselves with the controls
-- **Diagonal Map**: The user has **full visibility** of this map and they must complete it 3 times with each assistance type (given in a random order)
-- **Maze Map**: The user has **partial visibility** of this map and they must complete it 3 times with each assistance type (given in a random order)
-
 ## User Study Simulation Implementation Details
 ### Time-Optimal Mode-Switching Algorithm Implementation
 - `minBinaryHeap.py`: Min-Binary Heap Implementation
