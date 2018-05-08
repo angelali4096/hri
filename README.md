@@ -16,10 +16,10 @@ The domain we are exploring is assistive healthcare robotic arms. These high-dim
 - `timeOptPlanner.py`: Implementation of Dijkstra's algorithm; creates a map that determines the shortest distance to the goal from each `(x, y, mode)`
 
 ### Study Interface Implementation
-- `basicAnimation.py`: 
-- `basicAnimationClass.py`:
-- `maps.py`: Contains the pratice map, the diagonal map used in the study and the implementation of the assistance types 
-- `mazeMap.py`: Contains the maze map and the the implementation of the assistance types 
+- `basicAnimation.py`and`basicAnimationClass.py`: Code for visualizing the maps and mapping key presses to movement/mode-switching
+- `maps.py`: Contains the pratice map used in the study and the implementation of the assistance types 
+- `mazeMapFullyVisible.py`: Contains the full-visible maze map and the the implementation of the assistance types 
+- `mazeMapPartiallyVisible.py`: Contains the partially-visible maze map and the the implementation of the assistance types
 
 ### Running the User Study
 To run the user study execute:
